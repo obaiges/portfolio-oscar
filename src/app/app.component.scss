@@ -1,0 +1,73 @@
+nav {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+    animation: header-blur-scroll 0.6s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 250px;
+    border-bottom: 1px solid transparent;
+}
+
+@keyframes header-blur-scroll {
+    0% {}
+
+    100% {
+        border-bottom-color: var(--primary-color);
+        box-shadow: 2px 2px 20px var(--primary-color);
+    }
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+}
+
+.titulo {
+    background-image: linear-gradient(to right,
+            var(--primary-color),
+            var(--primary-color) 50%,
+            var(--text-color) 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    background-clip: text;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.titulo:before {
+    content: '';
+    background: var(--primary-color);
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.titulo:hover {
+    background-position: 0;
+}
+
+.titulo:hover::before {
+    width: 100%;
+}

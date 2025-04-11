@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: "Montserrat", sans-serif !important;
+    font-optical-sizing: auto !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.6s ease-in-out;
+}
+
+/* Tema claro */
+.light-theme {
+    --background-color: white;
+    --text-color: black;
+    --primary-color: #007bff;
+    /* o el color que quieras */
+}
+
+/* Tema oscuro */
+.dark-theme {
+    --background-color: #1e2331;
+    --text-color: rgb(224, 224, 224);
+    --primary-color: #bb86fc;
+    /* color que prefieras */
+}
