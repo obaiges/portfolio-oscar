@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'portfolio';
 
-  mode: string = 'light'; // Valor por defecto
+  mode: string = 'dark'; // Valor por defecto
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
@@ -40,5 +40,11 @@ export class AppComponent {
       document.body.classList.add('light-theme');
       document.body.classList.remove('dark-theme');
     }
+  }
+
+  getYears(): number {
+    const date = new Date().getFullYear();;
+    const age = date - 2022;
+    return age;
   }
 }

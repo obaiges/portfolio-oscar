@@ -1,20 +1,10 @@
 nav {
-    background-color: var(--background-color);
+    background: radial-gradient(80%, 80%, 50%, 20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
     color: var(--text-color);
     transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
     animation: header-blur-scroll 0.6s linear both;
     animation-timeline: scroll();
     animation-range: 0 250px;
-    border-bottom: 1px solid transparent;
-}
-
-@keyframes header-blur-scroll {
-    0% {}
-
-    100% {
-        border-bottom-color: var(--primary-color);
-        box-shadow: 2px 2px 20px var(--primary-color);
-    }
 }
 
 .material-symbols-outlined {
@@ -61,6 +51,7 @@ nav {
     left: 0;
     width: 0;
     height: 3px;
+    border-radius: 1rem;
     transition: all 0.3s ease-in-out;
 }
 
@@ -70,4 +61,81 @@ nav {
 
 .titulo:hover::before {
     width: 100%;
+}
+
+
+.animate-moving-shadow {
+    animation: moving-shadow 2s infinite linear;
+}
+
+.estado {
+    padding: .25rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 4rem;
+    animation: moving-shadow-state 2s infinite linear;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+
+    &:hover {
+        transform: scale(1.025);
+    }
+}
+
+@keyframes header-blur-scroll {
+    0% {
+        background: radial-gradient(80%, 80%, 50%, 20%, rgba(217, 216, 255, 0.5), rgba(255, 255, 255, 0.9));
+    }
+
+    50% {
+        background-color: var(--background-color);
+    }
+
+    100% {
+        box-shadow: 2px 2px 20px var(--primary-color);
+        background-color: var(--background-color);
+    }
+}
+
+@keyframes moving-shadow {
+    0% {
+        box-shadow: 5px 0 10px var(--primary-color);
+    }
+
+    25% {
+        box-shadow: 0 5px 10px var(--primary-color);
+    }
+
+    50% {
+        box-shadow: -5px 0 10px var(--primary-color);
+    }
+
+    75% {
+        box-shadow: 0 -5px 10px var(--primary-color);
+    }
+
+    100% {
+        box-shadow: 5px 0 10px var(--primary-color);
+    }
+}
+
+@keyframes moving-shadow-state {
+    0% {
+        box-shadow: 2px 0 4px var(--primary-color);
+    }
+
+    25% {
+        box-shadow: 0 2px 4px var(--primary-color);
+    }
+
+    50% {
+        box-shadow: -2px 0 4px var(--primary-color);
+    }
+
+    75% {
+        box-shadow: 0 -2px 4px var(--primary-color);
+    }
+
+    100% {
+        box-shadow: 2px 0 4px var(--primary-color);
+    }
 }
