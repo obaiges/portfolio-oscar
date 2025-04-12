@@ -18,7 +18,9 @@
     --background-color: rgb(240, 240, 240);
     --text-color: black;
     --primary-color: #007bff;
+    --primary-color-hover: #0057b4;
     --primary-color-25: rgba(0, 123, 255, 0.25);
+    --gris: rgb(104, 104, 104);
 }
 
 /* Tema oscuro */
@@ -26,7 +28,9 @@
     --background-color: #1e2331;
     --text-color: rgb(224, 224, 224);
     --primary-color: #bb86fc;
+    --primary-color-hover: #955bdb;
     --primary-color-25: rgba(187, 134, 252, 0.25);
+    --gris: rgb(145, 145, 145);
 }
 
 body {

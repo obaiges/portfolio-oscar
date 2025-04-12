@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, computed, Inject, PLATFORM_ID, signal } from '@angular/core';
+import { Component, computed, HostListener, Inject, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { textos } from './textos';
 
@@ -25,6 +25,7 @@ export class AppComponent {
   mode: string = 'dark';
   t = t
   currentLang = currentLang
+  showButton = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
@@ -67,4 +68,14 @@ export class AppComponent {
   setLanguage(lang: 'en' | 'es') {
     setLang(lang);
   }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    // Mostrar el botón si el scroll supera los 100px
+    this.showButton = scrollPosition > 100;
+  }
+
+
 }
