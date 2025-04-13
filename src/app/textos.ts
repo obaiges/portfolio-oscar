@@ -1,3 +1,5 @@
+import { time } from "node:console";
+
 export const textos = {
     es: {
         menu: {
@@ -13,6 +15,11 @@ export const textos = {
             desc2: 'en aplicaciones web responsivas, escalables y de alto rendimiento.',
             status: 'Abierto a nuevas oportunidades',
             contact: 'Contáctame'
+        },
+        experience: {
+            title: 'Desarrollador Web Full-Stack',
+            title2: 'Responsable del Departamento de TI',
+            time: 'Actualmente'
         }
     },
     en: {
@@ -29,6 +36,11 @@ export const textos = {
             desc2: 'in responsive, scalable and high performance web applications.',
             status: 'Open to new opportunities',
             contact: 'Contact me'
+        },
+        experience: {
+            title: 'Full-Stack Web Developer',
+            title2: 'Head of IT Department',
+            time: 'Now'
         }
     }
 }
