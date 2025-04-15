@@ -1,0 +1,12 @@
+<article class="flex w-full box-border items-center">
+    <span class="min-w-40 text-center text-sm w-40 py-1 px-4 box-border rounded-l-md bg-[var(--primary-color-25)]">
+        {{name}}
+    </span>
+    <span class="relative w-full rounded-r-md py-1 bg-[var(--primary-color-10)] overflow-hidden">
+        <div class="absolute top-0 left-0 h-full bg-[var(--primary-color-50)] pointer-events-none"
+            [ngStyle]="{'width': score + '%'}"></div>
+        <span class="relative z-10 text-sm w-full flex justify-end pr-2">
+            {{score}}%
+        </span>
+    </span>
+</article>

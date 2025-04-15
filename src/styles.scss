@@ -19,9 +19,11 @@
     --text-color: black;
     --primary-color: #007bff;
     --primary-color-hover: #0057b4;
+    --primary-color-50: rgba(0, 123, 255, 0.5);
     --primary-color-25: rgba(0, 123, 255, 0.25);
     --primary-color-10: rgba(0, 123, 255, 0.1);
     --gris: rgb(104, 104, 104);
+    --blanco-suave: #cee6ff;
 }
 
 /* Tema oscuro */
@@ -30,9 +32,12 @@
     --text-color: rgb(224, 224, 224);
     --primary-color: #bb86fc;
     --primary-color-hover: #955bdb;
+    --primary-color-50: rgba(187, 134, 252, 0.5);
     --primary-color-25: rgba(187, 134, 252, 0.25);
     --primary-color-10: rgba(187, 134, 252, 0.1);
     --gris: rgb(145, 145, 145);
+    --blanco-suave: #e3caff;
+
 }
 
 body {
