@@ -152,10 +152,10 @@ export class AppComponent {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const titulo = document.getElementById('skills-title');
     let distanciaTitle = window.innerHeight - titulo!.getBoundingClientRect().top;
-    if (distanciaTitle > 300) {
+    if (distanciaTitle > 200) {
       titulo!.classList.add('skills-show-animation');
     }
-    if (distanciaTitle < 50) {
+    if (distanciaTitle < 0) {
       titulo!.classList.remove('skills-show-animation');
     }
 

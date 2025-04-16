@@ -45,7 +45,7 @@ export class SkillsComponent implements OnChanges {
     const skill = document.getElementById(this.skillId);
     if (!skill) return;
     const distanciaTitle = window.innerHeight - skill.getBoundingClientRect().top;
-    if (distanciaTitle > 300 && !this.shouldAnimate) {
+    if (distanciaTitle > 200 && !this.shouldAnimate) {
       this.shouldAnimate = true;
       this.animateScore();
     }
