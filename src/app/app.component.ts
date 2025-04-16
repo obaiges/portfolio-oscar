@@ -30,35 +30,31 @@ export class AppComponent {
 
   skills = [{
     name: 'Angular 17+',
-    score: 90
-  },
-  {
-    name: 'Express',
     score: 85
   },
   {
+    name: 'Express',
+    score: 80
+  },
+  {
     name: 'JavaScript',
-    score: 90
+    score: 85
   },
   {
     name: 'TypeScript',
-    score: 90
+    score: 85
   },
   {
     name: 'HTML, CSS',
-    score: 100
+    score: 90
   },
   {
     name: 'SASS, SCSS',
-    score: 80
+    score: 85
   },
   {
     name: 'Tailwind CSS',
-    score: 80
-  },
-  {
-    name: 'Pixel Perfect',
-    score: 100
+    score: 90
   },
   {
     name: 'API REST',
@@ -66,11 +62,7 @@ export class AppComponent {
   },
   {
     name: 'MySQL',
-    score: 100
-  },
-  {
-    name: 'Signals',
-    score: 75
+    score: 95
   },
   {
     name: 'UX/UI & Figma',
