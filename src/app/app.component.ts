@@ -93,22 +93,12 @@ export class AppComponent {
       const savedLang = localStorage.getItem('lang') as 'en' | 'es' | null;
       if (savedLang) currentLang.set(savedLang);
 
-      // Cargr el tema inicial desde localStorage
+      // Cargar el tema inicial desde localStorage
       const savedMode = localStorage.getItem('mode');
       if (savedMode) {
         this.mode = savedMode;
       }
       this.applyTheme();
-      window.addEventListener('DOMContentLoaded', () => {
-        const article = document.getElementById('fadeArticle');
-        const article2 = document.getElementById('fadeArticle2');
-        requestAnimationFrame(() => {
-          article!.classList.remove('opacity-0', 'translate-y-[-100px]');
-          article!.classList.add('opacity-100', 'translate-y-0');
-          article2!.classList.remove('opacity-0', 'translate-y-[-100px]');
-          article2!.classList.add('opacity-100', 'translate-y-0');
-        });
-      });
     }
   }
 
@@ -142,15 +132,6 @@ export class AppComponent {
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    const titulo = document.getElementById('skills-title');
-    let distanciaTitle = window.innerHeight - titulo!.getBoundingClientRect().top;
-    if (distanciaTitle > 200) {
-      titulo!.classList.add('skills-show-animation');
-    }
-    if (distanciaTitle < 0) {
-      titulo!.classList.remove('skills-show-animation');
-    }
-
     // Mostrar el botón si el scroll supera los 100px
     this.showButton = scrollPosition > 100;
   }

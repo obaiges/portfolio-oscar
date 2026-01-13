@@ -1,47 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+/* Modern Glass Design System */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-    font-family: "Montserrat", sans-serif !important;
-    font-optical-sizing: auto !important;
-    font-weight: 500 !important;
-    font-style: normal !important;
-    padding: 0;
-    margin: 0;
-    scroll-behavior: smooth;
-}
-
-/* Tema claro */
-.light {
-    --background-color: rgb(240, 240, 240);
-    --text-color: black;
-    --primary-color: #007bff;
-    --primary-color-hover: #0057b4;
-    --primary-color-50: rgba(0, 123, 255, 0.5);
-    --primary-color-25: rgba(0, 123, 255, 0.25);
-    --primary-color-10: rgba(0, 123, 255, 0.1);
-    --gris: rgb(104, 104, 104);
-    --blanco-suave: #cee6ff;
-}
-
-/* Tema oscuro */
-.dark {
-    --background-color: #1e2331;
-    --text-color: rgb(224, 224, 224);
-    --primary-color: #bb86fc;
-    --primary-color-hover: #955bdb;
-    --primary-color-50: rgba(187, 134, 252, 0.5);
-    --primary-color-25: rgba(187, 134, 252, 0.25);
-    --primary-color-10: rgba(187, 134, 252, 0.1);
-    --gris: rgb(145, 145, 145);
-    --blanco-suave: #e3caff;
-
+:root {
+  --font-sans: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: all 0.6s ease-in-out;
+  font-family: var(--font-sans);
+  @apply text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 ease-in-out;
+}
+
+h1, h2, h3, h4, h5, h6, .display-font {
+  font-family: var(--font-serif);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+}
+
+.glass-card {
+  @apply bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm border border-white/30 dark:border-white/10 shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600;
+}
+
+/* Animation Utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-indigo-400 dark:to-sky-400;
+}
+
+/* Theme Variables (for legacy support if needed, but prefer Tailwind classes) */
+.light {
+    --primary-color: #6366f1; /* Indigo 500 */
+    --primary-color-hover: #4f46e5;
+    --background-color: #f8fafc;
+}
+
+.dark {
+    --primary-color: #818cf8; /* Indigo 400 */
+    --primary-color-hover: #6366f1;
+    --background-color: #0f172a;
 }
