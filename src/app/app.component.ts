@@ -16,7 +16,7 @@ export const setLang = (lang: 'en' | 'es') => {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SkillsComponent],
+  imports: [SkillsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -46,17 +46,17 @@
         <div class="estado flex items-center text-center bg-[var(--primary-color-25)]">{{t().header.status}}</div>
         <div
           class="flex cursor-pointer border hover:scale-105 transition-transform border-[var(--text-color)] rounded-full items-center gap-2 py-1 px-4">
-          <span class="material-symbols-outlined"> forward_to_inbox</span> {{t().header.contact}}
+          <span class="material-symbols-outlined">forward_to_inbox</span> {{t().header.contact}}
         </div>
       </div>
     </div>
   </div>
 </header>
-<main>
+<main class="overflow-x-hidden">
   <section class="box-border max-w-5xl mx-8 lg:mx-auto pt-14" id="experiencia">
     <header class="text-4xl">{{t().menu.exp}}</header>
     <article id="fadeArticle"
-      class="w-full mt-8 box-border flex flex-col gap-2 borde-suave rounded-md p-4 text-center opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]">
+      class="w-full mt-8 box-border flex bg-[var(--primary-color-10)] flex-col gap-2 borde-suave rounded-md p-4 text-center opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]">
       <header class="flex gap-4 justify-between items-center">
         <span class="text-2xl text-start text-[var(--primary-color)] !font-semibold">{{t().experience.title2}}</span>
         <time class="opacity-70 text-sm text-end !italic">02/2024 - {{t().experience.time}}</time>
@@ -70,15 +70,15 @@
           <p class="max-w-[80%] text-sm text-start">{{t().experience.description}}</p>
         </div>
       </div>
-      <footer class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:bg-[var(--primary-color-10)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
-        <article>{{t().experience.pastillas.past1}}</article>
-        <article>{{t().experience.pastillas.past2}}</article>
-        <article>{{t().experience.pastillas.past3}}</article>
-        <article>{{t().experience.pastillas.past4}}</article>
+      <footer class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:shadow-md *:bg-[var(--primary-color-25)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
+        <article><span>{{t().experience.pastillas.past1}}</span></article>
+        <article><span>{{t().experience.pastillas.past2}}</span></article>
+        <article><span>{{t().experience.pastillas.past3}}</span></article>
+        <article><span>{{t().experience.pastillas.past4}}</span></article>
       </footer>
     </article>
     <article id="fadeArticle2"
-      class="w-full mt-12 box-border flex flex-col gap-2 borde-suave rounded-md p-4 text-center opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]">
+      class="w-full mt-12 box-border bg-[var(--primary-color-10)] flex flex-col gap-2 borde-suave rounded-md p-4 text-center opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]">
       <header class="flex gap-4 justify-between items-center">
         <span class="text-2xl text-start text-[var(--primary-color)] !font-semibold">{{t().experience.title}}</span>
         <time class="opacity-70 text-sm text-end !italic">02/2022 - 02/2024</time>
@@ -92,7 +92,7 @@
           <p class="max-w-[80%] text-sm text-start">{{t().experience.description2}}</p>
         </div>
       </div>
-      <footer class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:bg-[var(--primary-color-10)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
+      <footer class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:shadow-md *:bg-[var(--primary-color-25)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
         <article>{{t().experience.pastillas2.past1}}</article>
         <article>{{t().experience.pastillas2.past2}}</article>
         <article>{{t().experience.pastillas2.past3}}</article>
@@ -108,7 +108,7 @@
   <section class="w-full box-border bg-[var(--primary-color-10)]">
     <div class="max-w-5xl mx-8 lg:mx-auto">
       <header class="text-4xl skills-show" id="skills-title">{{t().menu.skills}}</header>
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mt-12">
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
         @for (s of skills; track $index) {
           <app-skills [name]="s.name" [score]="s.score"></app-skills>
         }
@@ -120,86 +120,12 @@
       d="M0,160L48,181.3C96,203,192,245,288,229.3C384,213,480,139,576,122.7C672,107,768,149,864,186.7C960,224,1056,256,1152,240C1248,224,1344,160,1392,128L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
     </path>
   </svg>
-  <section class="w-full box-border max-w-5xl mx-8 lg:mx-auto" id="proyectos">
-    <header class="text-4xl">{{t().menu.proyectos}}</header>
-    <div class="">
-      Hola buenas soy los proyectos
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores iure cumque explicabo delectus veniam expedita
-      eum tempora, nisi harum voluptates doloremque, facilis, itaque ipsa nam voluptate suscipit impedit iste ut.
-      Sapiente numquam dolorum provident velit reiciendis debitis corrupti doloremque optio quisquam tempora dolor
-      obcaecati saepe praesentium qui esse nobis assumenda atque, hic autem perspiciatis tenetur maxime minus. Ipsa,
-      iste accusantium?
-      Iusto, vel. Laboriosam ratione a nemo. Veniam doloribus libero minima. Nostrum doloremque id ea quam tenetur,
-      adipisci voluptatum rem ad error eos, facere tempore ratione deserunt quod. Modi, vero voluptates.
-      Facere, eveniet facilis quibusdam laudantium illo molestiae deleniti aliquid neque quod, harum quas culpa
-      architecto blanditiis et, quaerat provident optio! Iusto voluptatem non quam placeat ad. Laudantium aliquid earum
-      accusamus?
-      Inventore numquam incidunt voluptates earum! Molestias vel a voluptatibus placeat et iste. Enim recusandae
-      voluptate sit natus, iusto id aliquid culpa repellendus magni laudantium? Natus ex explicabo libero dignissimos
-      iusto?
-      Minima placeat, quaerat repellat sequi et dolor nesciunt at delectus. Odio expedita cumque tempora numquam beatae!
-      Necessitatibus vero doloremque itaque pariatur nam, ad inventore sunt vel molestiae debitis deleniti architecto.
-      Nesciunt officiis culpa quo vel, fugit, ullam a unde maxime molestiae earum animi odit ut assumenda nemo illum
-      autem harum aliquam numquam voluptate minus ipsa laudantium quos fuga deleniti. Distinctio!
-      Doloremque at fugiat dignissimos temporibus. Praesentium quis voluptates veritatis suscipit aut dolores et,
-      impedit optio voluptatum vitae. Sit, eum, qui, ad illum culpa neque officiis beatae soluta iusto facilis impedit?
-      Id voluptatem cumque ex pariatur laborum error assumenda nostrum veritatis repudiandae aliquam dolores impedit,
-      ipsa consequuntur inventore alias? Id rem adipisci reprehenderit, soluta sit nesciunt quos quod rerum perferendis
-      doloribus.
-      Veritatis assumenda minus, quod nam quam id nesciunt itaque adipisci beatae commodi fugit quos molestias tempore
-      harum veniam eaque ab officia accusamus eligendi pariatur quae at odio? Sequi, modi explicabo!
-      Temporibus corporis soluta eligendi est, ipsam nulla quia ipsa, accusantium veritatis officiis, inventore
-      quisquam. Quia illum reiciendis mollitia deleniti necessitatibus provident culpa vitae excepturi blanditiis ipsa,
-      suscipit, debitis assumenda ab?
-      Nesciunt quod sed qui ea quae hic delectus laudantium tempora cum? Odio alias architecto fugiat sed doloribus
-      dolore, aliquam obcaecati dolores nam! Veniam ut fugiat dicta quas perspiciatis, reprehenderit molestiae?
-      Quia laudantium voluptatum animi ducimus eligendi dolores tempora enim corrupti, recusandae unde minima, quidem,
-      nostrum a vitae sint amet. Id totam eveniet eum placeat laboriosam sed aliquid laborum iste doloremque.
-      Pariatur ducimus officia distinctio atque quibusdam accusantium suscipit nihil fugiat tempora, nam consequatur
-      sint maiores fuga placeat quisquam, quae, reprehenderit repellat inventore adipisci? Quidem incidunt dolores animi
-      amet, facere iusto.
-      Delectus quia architecto numquam at, magni, nesciunt fuga veniam ipsum excepturi possimus, illum suscipit maiores
-      reprehenderit a libero ipsam? Praesentium distinctio incidunt suscipit eligendi illo dolorem rerum minus officia
-      consequatur.
-      Quis incidunt quibusdam cumque magnam corporis ipsum hic repellat quas voluptate modi fuga nostrum, repellendus
-      quam a deleniti nesciunt, facere optio iusto. Commodi voluptatem hic inventore veritatis provident repudiandae
-      incidunt.
-      Odit, amet necessitatibus vel architecto eveniet asperiores ullam exercitationem cupiditate maxime pariatur atque
-      reprehenderit ipsa quisquam a unde, dicta accusamus laborum! Accusamus consequuntur quae accusantium, sed tenetur
-      alias quo aperiam.
-      Ab accusamus totam amet adipisci aliquid dignissimos, mollitia exercitationem obcaecati alias. Temporibus, vero
-      sit. Repudiandae nisi similique, expedita pariatur deleniti voluptas. Tenetur ab repellat voluptatum cupiditate
-      delectus, optio eum ea.
-      Eligendi officiis tenetur saepe minima itaque quisquam molestiae error sunt dolores minus, neque corporis nulla
-      modi facilis fugiat sed soluta aliquid ea? Unde odio animi non quibusdam praesentium nostrum nihil.
-      Voluptatum, cumque? Sunt, nisi delectus corrupti excepturi iste eaque. Natus, quas? Eaque eligendi animi
-      consequatur sit. Vel dignissimos alias ducimus culpa eligendi exercitationem mollitia, quas ad! Magni iusto
-      molestiae odit.
-      Odio, obcaecati? Excepturi, alias natus consequuntur aspernatur maiores suscipit totam eum dolorum doloribus quo
-      earum iste iure sit corporis cupiditate atque vel saepe hic. Provident dolorum repudiandae quidem. Sequi,
-      doloribus!
-      Provident recusandae tenetur aspernatur, non doloremque, deleniti amet cumque consequuntur facilis quae odit! Nam,
-      voluptatem distinctio perspiciatis a nemo pariatur rerum voluptatum numquam odio? Itaque provident voluptates
-      facilis sapiente. Debitis.
-      Commodi et molestias aut iste. Quae fugit eos esse. Similique voluptatem ratione aperiam architecto non expedita
-      fuga adipisci deserunt. Eligendi doloremque illo maxime consequuntur eaque tenetur quia ab reiciendis totam?
-      Corporis unde tempora animi aliquid eos accusamus! Facere rem explicabo fugit voluptates culpa vero porro
-      perspiciatis consequatur velit, reiciendis quidem soluta praesentium totam et aperiam ex accusantium eveniet ad
-      iusto?
-      Itaque facere adipisci aliquam fuga provident sunt molestias suscipit necessitatibus velit dicta pariatur
-      veritatis possimus voluptatibus, vitae quaerat! Ullam accusantium debitis rem amet ad molestias dolorem temporibus
-      pariatur quod ut?
-      Quibusdam, omnis sint, vero quas, expedita eos atque architecto quam fuga error dignissimos impedit sed sit ipsum
-      rerum tempora magnam quidem! Fugit officia, quisquam est perspiciatis necessitatibus ipsa accusamus tenetur!
-      Amet illo odio atque doloremque enim officia labore, saepe, adipisci quas earum suscipit harum cupiditate
-      obcaecati perferendis blanditiis? Labore aspernatur, tempora possimus nemo inventore facere dicta itaque nisi at
-      quod?
-      Voluptate odio totam necessitatibus sint earum nesciunt illum ducimus, dolorum id ex accusamus optio ea, similique
-      quaerat est possimus quis veniam ratione ut maiores quia impedit tempore sapiente nemo. Eveniet.
-      Ducimus delectus magni odit vero. Sequi veniam explicabo eius ipsum dolor rem quia minus quae perspiciatis iusto
-      qui possimus, quasi quod sint unde veritatis ullam sapiente mollitia. Illo, aliquid molestias?
-      Vero ad hic laborum laboriosam eligendi possimus tenetur alias eius! Facere vel repudiandae distinctio nobis,
-      tempore vero aliquid ex cum amet repellat sed eius omnis ipsam alias qui sit dolorem!
+  <section class="w-full box-border" id="proyectos">
+    <div class="max-w-5xl mx-8 lg:mx-auto">
+      <header class="text-4xl">{{t().menu.proyectos}}</header>
+      <div class="">
+        Hola buenas soy los proyectos
+      </div>
     </div>
   </section>
 </main>

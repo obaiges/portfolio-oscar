@@ -1,5 +1,5 @@
 import { isPlatformBrowser, NgStyle } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, Inject, Input, OnChanges, PLATFORM_ID, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnChanges, PLATFORM_ID, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-skills',

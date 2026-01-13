@@ -1,5 +1,3 @@
-import { time } from "node:console";
-
 export const textos = {
     es: {
         menu: {
