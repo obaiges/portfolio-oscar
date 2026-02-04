@@ -87,8 +87,9 @@ nav {
 
 .flip-card {
     background-color: transparent;
-    width: 11rem;
-    min-width: 10rem;
+    width: 12rem;
+    height: 18rem;
+    min-width: 20rem;
     object-fit: cover;
     perspective: 1000px;
 }
@@ -158,6 +159,7 @@ nav {
         background-color: var(--background-color);
     }
 }
+
 
 @keyframes moving-shadow {
     0% {
