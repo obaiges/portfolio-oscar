@@ -71,10 +71,9 @@
         </div>
       </div>
       <footer class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:shadow-md *:bg-[var(--primary-color-25)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
-        <article><span>{{t().experience.pastillas.past1}}</span></article>
-        <article><span>{{t().experience.pastillas.past2}}</span></article>
-        <article><span>{{t().experience.pastillas.past3}}</span></article>
-        <article><span>{{t().experience.pastillas.past4}}</span></article>
+        @for (p of t().experience.pastillas; track $index) {
+        <article><span>{{p.past}}</span></article>
+        }
       </footer>
     </article>
     <article id="fadeArticle2"
@@ -93,10 +92,9 @@
         </div>
       </div>
       <footer class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:shadow-md *:bg-[var(--primary-color-25)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
-        <article>{{t().experience.pastillas2.past1}}</article>
-        <article>{{t().experience.pastillas2.past2}}</article>
-        <article>{{t().experience.pastillas2.past3}}</article>
-        <article>{{t().experience.pastillas2.past4}}</article>
+        @for (p of t().experience.pastillas2; track $index) {
+        <article>{{p.past}}</article>
+        }
       </footer>
     </article>
   </section>
