@@ -108,7 +108,7 @@
   <section class="w-full box-border bg-[var(--primary-color-10)]">
     <div class="max-w-5xl mx-8 lg:mx-auto">
       <header class="text-4xl skills-show" id="skills-title">{{t().menu.skills}}</header>
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
+      <section class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mt-8">
         @for (s of skills; track $index) {
           <app-skills [name]="s.name" [score]="s.score"></app-skills>
         }
