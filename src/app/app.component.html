@@ -100,26 +100,19 @@
       </footer>
     </article>
   </section>
-  <svg xmlns="http://www.w3.org/2000/svg" id="skills" viewBox="0 0 1440 320">
-    <path fill="var(--primary-color-10)" fill-opacity="1"
-      d="M0,128L48,133.3C96,139,192,149,288,170.7C384,192,480,224,576,202.7C672,181,768,107,864,90.7C960,75,1056,117,1152,133.3C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-    </path>
-  </svg>
-  <section class="w-full box-border bg-[var(--primary-color-10)]">
+
+
+  <section class="w-full box-border py-10 my-20 bg-[var(--primary-color-10)]">
     <div class="max-w-5xl mx-8 lg:mx-auto">
       <header class="text-4xl skills-show" id="skills-title">{{t().menu.skills}}</header>
-      <section class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mt-8">
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8">
         @for (s of skills; track $index) {
           <app-skills [name]="s.name" [score]="s.score"></app-skills>
         }
       </section>
     </div>
   </section>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="var(--primary-color-10)" fill-opacity="1"
-      d="M0,160L48,181.3C96,203,192,245,288,229.3C384,213,480,139,576,122.7C672,107,768,149,864,186.7C960,224,1056,256,1152,240C1248,224,1344,160,1392,128L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
-    </path>
-  </svg>
+
   <section class="w-full box-border" id="proyectos">
     <div class="max-w-5xl mx-8 lg:mx-auto">
       <header class="text-4xl">{{t().menu.proyectos}}</header>
