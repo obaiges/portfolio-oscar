@@ -24,9 +24,7 @@
         (click)="setLanguage(currentLang() === 'es' ? 'en' : 'es')">
         {{currentLang()}}
       </button>
-      <button
-        class="material-symbols-outlined hover:text-indigo-500 hover:rotate-12"
-        (click)="toggleMode()">
+      <button class="material-symbols-outlined hover:text-indigo-500 hover:rotate-12" (click)="toggleMode()">
         {{ mode === 'light' ? 'light_mode' : 'dark_mode' }}
       </button>
     </div>
@@ -130,14 +128,10 @@
             {{t().experience.description}}
           </p>
           <div class="flex flex-wrap gap-2">
+            @for (p of t().experience.pastillas; track $index) {
             <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas.past1}}</span>
-            <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas.past2}}</span>
-            <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas.past3}}</span>
-            <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas.past4}}</span>
+              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{p.past}}</span>
+            }
           </div>
         </div>
       </div>
@@ -165,14 +159,10 @@
             {{t().experience.description2}}
           </p>
           <div class="flex flex-wrap gap-2">
+            @for (p of t().experience.pastillas2; track $index) {
             <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas2.past1}}</span>
-            <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas2.past2}}</span>
-            <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas2.past3}}</span>
-            <span
-              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{t().experience.pastillas2.past4}}</span>
+              class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{{p.past}}</span>
+            }
           </div>
         </div>
       </div>
