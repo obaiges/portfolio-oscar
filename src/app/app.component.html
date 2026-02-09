@@ -26,7 +26,7 @@
   </div>
 </nav>
 <header class="pt-40 pb-16 max-w-5xl mx-8 lg:mx-auto" id="head">
-  <div class="flex gap-12">
+  <div class="flex gap-28">
     <div class="flip-card relative">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -60,60 +60,96 @@
   </div>
 </header>
 <main class="overflow-x-hidden">
-  <section class="box-border max-w-5xl mx-8 lg:mx-auto pt-14" id="experiencia">
-    <header class="text-4xl">{{t().menu.exp}}</header>
-    <article id="fadeArticle"
-      class="w-full mt-8 box-border flex bg-[var(--primary-color-10)] flex-col gap-2 borde-suave rounded-md p-4 text-center opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]">
-      <header class="flex gap-4 justify-between items-center">
-        <span class="text-2xl text-start text-[var(--primary-color)] !font-semibold">{{t().experience.title2}}</span>
-        <time class="opacity-70 text-sm text-end !italic">02/2024 - {{t().experience.time}}</time>
-      </header>
-      <div class="flex items-center gap-1 select-none">
-        <span class="material-symbols-outlined">location_on</span>
-        <a href="https://www.nitro-pc.es/" class="titulo" alt="Nitropc" title="Nitropc" target="_blank">DVR Technology
-          SL</a>
-      </div>
-      <div class="flex gap-4 items-center">
-        <div class="flex-1">
-          <p class="max-w-[80%] text-sm text-start">{{t().experience.description}}</p>
+  <section id="experiencia" class="max-w-5xl mx-8 lg:mx-auto pt-14" id="experiencia">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-2">{{t().menu.exp}}</h2>
+      <div class="h-1 w-20 bg-[var(--primary-color)] mx-auto rounded-full"></div>
+    </div>
+
+    <div class="relative border-l-2 border-[var(--primary-color-50)] ml-4 md:ml-0 space-y-12">
+      <!-- DVR Technology -->
+      <article
+        class="relative pl-12 md:pl-0 opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]"
+        id="fadeArticle">
+        <!-- Dot -->
+        <div
+          class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-[var(--primary-color)] ring-4 ring-[var(--primary-color-25)] shadow-lg">
         </div>
-      </div>
-      <footer
-        class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:shadow-md *:bg-[var(--primary-color-25)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
-        @for (p of t().experience.pastillas; track $index) {
-        <article><span>{{p.past}}</span></article>
-        }
-      </footer>
-    </article>
-    <article id="fadeArticle2"
-      class="w-full mt-12 box-border bg-[var(--primary-color-10)] flex flex-col gap-2 borde-suave rounded-md p-4 text-center opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]">
-      <header class="flex gap-4 justify-between items-center">
-        <span class="text-2xl text-start text-[var(--primary-color)] !font-semibold">{{t().experience.title}}</span>
-        <time class="opacity-70 text-sm text-end !italic">02/2022 - 02/2024</time>
-      </header>
-      <div class="flex items-center gap-1 select-none">
-        <span class="material-symbols-outlined">location_on</span>
-        <a href="https://www.nitro-pc.es/" class="titulo" alt="Nitropc" title="Nitropc" target="_blank">DVR Technology
-          SL</a>
-      </div>
-      <div class="flex gap-4 items-center">
-        <div class="flex-1">
-          <p class="max-w-[80%] text-sm text-start">{{t().experience.description2}}</p>
+
+        <!-- Content -->
+        <div
+          class="p-8 rounded-2xl md:ml-12 transition hover:outline hover:outline-1 hover:outline-[var(--primary-color-50)] hover:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))] hover:dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.15),rgba(15,23,42,1))]">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+            <h3 class="text-2xl font-bold">{{t().experience.title2}}</h3>
+            <span
+              class="px-3 py-1 text-xs font-bold rounded-full bg-[var(--primary-color-10)] text-[var(--primary-color)]">
+              02/2024 - {{t().experience.time}}
+            </span>
+          </div>
+          <div class="flex items-center gap-2 mb-4 text-sm font-medium">
+            <span class="material-symbols-outlined text-lg">business</span>
+            <a href="https://www.nitro-pc.es/" target="_blank" class="titulo transition-colors">DVR
+              Technology SL</a>
+            •
+            <span class="material-symbols-outlined text-lg">location_on</span> Zaragoza
+          </div>
+          <p class="mb-6">
+            {{t().experience.description}}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            @for (p of t().experience.pastillas; track $index) {
+            <span
+              class="px-3 py-1 rounded-md text-xs font-semibold bg-[var(--primary-color-10)] text-[var(--primary-color)] border border-[var(--primary-color-50)]">{{p.past}}</span>
+            }
+          </div>
         </div>
-      </div>
-      <footer
-        class="flex gap-4 mt-2 items-center text-[13px] *:rounded-full *:shadow-md *:bg-[var(--primary-color-25)] *:border-[1px] *:border-[var(--primary-color-25)] *:py-[2px] *:px-4">
-        @for (p of t().experience.pastillas2; track $index) {
-        <article>{{p.past}}</article>
-        }
-      </footer>
-    </article>
+      </article>
+
+      <!-- Previous Role -->
+      <article
+        class="relative pl-12 md:pl-0 opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]"
+        id="fadeArticle2">
+        <div
+          class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-[var(--primary-color)] ring-4 ring-[var(--background-color)]">
+        </div>
+
+        <div
+          class="p-8 rounded-2xl md:ml-12 transition hover:outline hover:outline-1 hover:outline-[var(--primary-color-50)] hover:shadow-md hover:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))] hover:dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.15),rgba(15,23,42,1))]">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+            <h3 class="text-2xl font-bold">{{t().experience.title}}</h3>
+            <span
+              class="px-3 py-1 text-xs font-bold rounded-full bg-[var(--primary-color-10)] text-[var(--primary-color)]">
+              02/2022 - 02/2024
+            </span>
+          </div>
+          <div class="flex items-center gap-2 mb-4 text-sm font-medium">
+            <span class="material-symbols-outlined text-lg">business</span>
+            <a href="https://www.nitro-pc.es/" target="_blank" class="titulo transition-colors">DVR
+              Technology SL</a>
+            •
+            <span class="material-symbols-outlined text-lg">location_on</span> Zaragoza
+          </div>
+          <p class="mb-6">
+            {{t().experience.description2}}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            @for (p of t().experience.pastillas2; track $index) {
+            <span
+              class="px-3 py-1 rounded-md text-xs font-semibold bg-[var(--primary-color-10)] text-[var(--primary-color)] border border-[var(--primary-color-50)]">{{p.past}}</span>
+            }
+          </div>
+        </div>
+      </article>
+    </div>
   </section>
 
 
   <section class="w-full box-border py-10 my-20 skew-y-1 bg-[var(--primary-color-10)]">
     <div class="max-w-5xl mx-8 lg:mx-auto -skew-y-1">
-      <header class="text-4xl skills-show" id="skills-title">{{t().menu.skills}}</header>
+      <div class="text-center mb-16 skills-show" id="skills-title">
+        <h2 class="text-4xl font-bold mb-2">{{t().menu.skills}}</h2>
+        <div class="h-1 w-20 bg-[var(--primary-color)] mx-auto rounded-full"></div>
+      </div>
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8">
         @for (s of skills; track $index) {
         <app-skills [name]="s.name" [score]="s.score"></app-skills>
