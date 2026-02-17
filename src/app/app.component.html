@@ -274,7 +274,8 @@
 
             <div class="absolute inset-0 bg-[var(--primary-color-25)] rounded-full blur-2xl animate-pulse"></div>
 
-            <img src="../assets/img/perfil5.jpeg" alt="Profile" class="rounded-full w-full h-full object-cover 
+            <img [src]="mode == 'dark' ? '../assets/img/perfil4.jpeg' : '../assets/img/perfil5.jpeg'" alt="Profile"
+              class="rounded-full w-full h-full object-cover 
              border-4 border-[var(--primary-color-50)] 
              relative z-10 transition-transform hover:scale-105 duration-500">
 
