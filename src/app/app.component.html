@@ -51,10 +51,10 @@
           class="!font-semibold text-[var(--primary-color)]">Full-Stack Developer</span> {{t().header.desc2}}</span>
       <div class="flex gap-4 *:select-none *:text-sm">
         <div class="estado flex items-center text-center bg-[var(--primary-color-25)]">{{t().header.status}}</div>
-        <a
-          class="flex cursor-pointer border hover:scale-105 transition-transform border-[var(--text-color)] rounded-full items-center gap-2 py-1 px-4" href="#contact">
+        <a class="flex cursor-pointer border hover:scale-105 transition-transform border-[var(--text-color)] rounded-full items-center gap-2 py-1 px-4"
+          href="#contact">
           <span class="material-symbols-outlined">forward_to_inbox</span> {{t().header.contact}}
-      </a>
+        </a>
       </div>
     </div>
   </div>
@@ -231,14 +231,15 @@
 
 
   <section class="w-full box-border pt-16" id="proyectos">
-    <div class="max-w-5xl mx-8 lg:mx-auto">
-      <header class="text-4xl font-bold mb-16">{{t().menu.proyectos}}
-        <div class="h-1 w-20 rounded-full mt-2
+    <div class="max-w-5xl mx-8 lg:mx-auto text-center">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-2">{{t().menu.proyectos}}</h2>
+        <div class="h-1 w-20 mx-auto rounded-full
                   bg-gradient-to-r 
                   from-[var(--primary-color-50)] 
                   to-[var(--primary-color)]">
         </div>
-      </header>
+      </div>
       <div class="">
         Hola buenas soy los proyectos
       </div>
@@ -297,8 +298,58 @@
     </div>
   </section>
 </main>
-<footer id="contact" class="max-w-5xl mx-auto">
-  Footer
+<footer id="contact"
+  class="w-full box-border pt-24 pb-8 relative overflow-hidden bg-gradient-to-br from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
+  <!-- Glow decorativo -->
+  <div
+    class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-[var(--primary-color-25)] rounded-full blur-3xl opacity-40">
+  </div>
+  <div
+    class="absolute bottom-0 right-0 w-96 h-96 bg-[var(--primary-color-10)] rounded-full blur-3xl opacity-40 translate-y-1/2">
+  </div>
+
+  <div class="max-w-4xl mx-8 lg:mx-auto relative z-10 text-center">
+    <div class="mb-12 skills-show" id="contact-title">
+      <h2 class="text-4xl font-bold mb-2">{{t().contact.title}}</h2>
+      <div
+        class="h-1 w-20 mx-auto rounded-full mb-8 bg-gradient-to-r from-[var(--primary-color-50)] to-[var(--primary-color)]">
+      </div>
+      <span class="mt-4 text-lg opacity-80">{{t().contact.subtitle}}</span>
+    </div>
+
+    <form
+      class="flex flex-col gap-6 max-w-xl mx-auto p-8 rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-[var(--primary-color-50)] group text-left skills-show"
+      id="contact-form">
+
+      <div class="flex flex-col gap-2">
+        <label for="name" class="font-semibold text-sm">{{t().contact.name}}</label>
+        <input #nameInput type="text" id="name" name="name" [placeholder]="t().contact.placeholderName"
+          class="bg-[var(--background-color)] border border-[var(--primary-color-25)] rounded-lg p-3 outline-none focus:border-[var(--primary-color)] transition-colors text-sm w-full text-[var(--text-color)] placeholder:opacity-50">
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="email" class="font-semibold text-sm">{{t().contact.email}}</label>
+        <input #emailInput type="email" id="email" name="email" [placeholder]="t().contact.placeholderEmail"
+          class="bg-[var(--background-color)] border border-[var(--primary-color-25)] rounded-lg p-3 outline-none focus:border-[var(--primary-color)] transition-colors text-sm w-full text-[var(--text-color)] placeholder:opacity-50">
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="message" class="font-semibold text-sm">{{t().contact.message}}</label>
+        <textarea #messageInput id="message" name="message" rows="4" [placeholder]="t().contact.placeholderMessage"
+          class="bg-[var(--background-color)] border border-[var(--primary-color-25)] rounded-lg p-3 outline-none focus:border-[var(--primary-color)] transition-colors text-sm w-full resize-none text-[var(--text-color)] placeholder:opacity-50"></textarea>
+      </div>
+
+      <button type="button" (click)="enviarCorreo(nameInput.value, emailInput.value, messageInput.value)"
+        class="mt-4 flex cursor-pointer border hover:scale-105 transition-transform border-[var(--primary-color)] bg-[var(--primary-color)] text-white dark:text-[#0f172a] font-bold rounded-full items-center justify-center gap-2 py-3 px-6 shadow-lg shadow-[var(--primary-color-25)] hover:shadow-[var(--primary-color-50)]">
+        <span class="material-symbols-outlined">send</span> {{t().contact.send}}
+      </button>
+
+    </form>
+
+    <div class="mt-16 text-sm opacity-60 font-medium">
+      &copy; {{getYears() + 2022}} Óscar Baiges Ruiz. Todos los derechos reservados.
+    </div>
+  </div>
 </footer>
 @if(showButton) {
 <div class="w-full fixed flex justify-end bottom-0">

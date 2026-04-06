@@ -36,6 +36,17 @@ export const textos = {
         about: {
             title: 'Sobre mí',
             description: 'Me gusta programar. Me gusta pensar cómo estructurar un proyecto para que no se rompa dentro de seis meses. Y me gusta trabajar con personas que disfrutan mejorando lo que hacen.\n\nHe pasado por la gestión de proyectos y eso me ha dado visión y contexto, pero lo que más me motiva es seguir cerca del código y de las decisiones técnicas importantes.',
+        },
+        contact: {
+            title: 'Contacto',
+            subtitle: 'Hablemos y creemos algo genial juntos',
+            name: 'Nombre',
+            email: 'Correo Electrónico',
+            message: 'Mensaje',
+            send: 'Enviar Mensaje',
+            placeholderName: 'Tu nombre',
+            placeholderEmail: 'tu@correo.com',
+            placeholderMessage: '¿En qué te puedo ayudar?'
         }
     },
     en: {
@@ -75,6 +86,17 @@ export const textos = {
         about: {
             title: 'About me',
             description: `I enjoy programming. I like thinking about how to structure a project so that it won't break down in six months. And I like working with people who enjoy improving what they do. \n\nI've been involved in project management, which has given me insight and context, but what motivates me most is staying close to the code and important technical decisions.`,
+        },
+        contact: {
+            title: 'Contact',
+            subtitle: "Let's talk and create something great together",
+            name: 'Name',
+            email: 'Email',
+            message: 'Message',
+            send: 'Send Message',
+            placeholderName: 'Your name',
+            placeholderEmail: 'you@email.com',
+            placeholderMessage: 'How can I help you?'
         }
     }
 }

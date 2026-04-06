@@ -174,9 +174,28 @@ export class AppComponent {
       if (dist < 0) aboutContent.classList.remove('skills-show-animation');
     }
 
+    const contactTitle = document.getElementById('contact-title');
+    if (contactTitle) {
+      const dist = window.innerHeight - contactTitle.getBoundingClientRect().top;
+      if (dist > 200) contactTitle.classList.add('skills-show-animation');
+      if (dist < 0) contactTitle.classList.remove('skills-show-animation');
+    }
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      const dist = window.innerHeight - contactForm.getBoundingClientRect().top;
+      if (dist > 200) contactForm.classList.add('skills-show-animation');
+      if (dist < 0) contactForm.classList.remove('skills-show-animation');
+    }
+
     // Mostrar el botón si el scroll supera los 100px
     this.showButton = scrollPosition > 100;
   }
 
-
+  enviarCorreo(name: string, email: string, message: string) {
+    if (!name || !email || !message) return;
+    const subject = encodeURIComponent(`Nuevo mensaje de ${name} desde tu Portfolio`);
+    const body = encodeURIComponent(`${message}`);
+    window.location.href = `mailto:oscarbaigesr@gmail.com?subject=${subject}&body=${body}`;
+  }
 }
