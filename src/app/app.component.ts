@@ -167,6 +167,20 @@ export class AppComponent {
       if (dist < 0) aboutTitle.classList.remove('skills-show-animation');
     }
 
+    const projectsTitle = document.getElementById('projects-title');
+    if (projectsTitle) {
+      const dist = window.innerHeight - projectsTitle.getBoundingClientRect().top;
+      if (dist > 200) projectsTitle.classList.add('skills-show-animation');
+      if (dist < 0) projectsTitle.classList.remove('skills-show-animation');
+    }
+
+    const projectsContent = document.getElementById('projects-content');
+    if (projectsContent) {
+      const dist = window.innerHeight - projectsContent.getBoundingClientRect().top;
+      if (dist > 200) projectsContent.classList.add('skills-show-animation');
+      if (dist < 0) projectsContent.classList.remove('skills-show-animation');
+    }
+
     const aboutContent = document.getElementById('about-content');
     if (aboutContent) {
       const dist = window.innerHeight - aboutContent.getBoundingClientRect().top;

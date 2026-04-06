@@ -230,9 +230,9 @@
   </section>
 
 
-  <section class="w-full box-border pt-16" id="proyectos">
-    <div class="max-w-5xl mx-8 lg:mx-auto text-center">
-      <div class="text-center mb-16">
+  <section class="w-full box-border pt-16 relative z-10" id="proyectos">
+    <div class="max-w-5xl mx-8 lg:mx-auto">
+      <div class="text-center mb-16 skills-show" id="projects-title">
         <h2 class="text-4xl font-bold mb-2">{{t().menu.proyectos}}</h2>
         <div class="h-1 w-20 mx-auto rounded-full
                   bg-gradient-to-r 
@@ -240,8 +240,37 @@
                   to-[var(--primary-color)]">
         </div>
       </div>
-      <div class="">
-        Hola buenas soy los proyectos
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 skills-show" id="projects-content">
+        @for (project of t().projects.list; track $index) {
+        <article
+          class="flex flex-col group relative overflow-hidden rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] backdrop-blur-sm shadow-xl hover:shadow-2xl hover:border-[var(--primary-color-50)] transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-60 w-full overflow-hidden">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10">
+            </div>
+            <img [src]="project.image" [alt]="project.name"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          </div>
+          <div class="p-8 flex flex-col flex-grow relative z-20">
+            <h3 class="text-2xl font-bold mb-3 transition-colors duration-300 group-hover:text-[var(--primary-color)]">
+              {{project.name}}</h3>
+            <p class="opacity-80 mb-6 text-sm leading-relaxed flex-grow">{{project.description}}</p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              @for (tech of project.technologies; track $index) {
+              <span class="px-3 py-1 rounded-md text-xs font-semibold
+                bg-[var(--primary-color-10)]
+                text-[var(--primary-color)]
+                border border-[var(--primary-color-50)]
+                transition-all duration-300
+                hover:scale-105 hover:shadow-md">
+                {{tech}}
+              </span>
+              }
+            </div>
+          </div>
+        </article>
+        }
       </div>
     </div>
   </section>

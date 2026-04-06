@@ -33,6 +33,24 @@ export const textos = {
                 { past: 'Migraciones' }
             ]
         },
+        projects: {
+            list: [
+                {
+                    name: 'Baitask',
+                    description: 'Proyecto para gestionar las tareas de un equipo profesional o de una unidad familiar, con roles, permisos, notificaciones... Además está orientado a la automatización de procesos y la gestión de proyectos.',
+                    image: '../assets/img/baitask.png',
+                    technologies: ['Angular 19', 'Node.js', 'MySQL', 'Express'],
+                    link: '#'
+                },
+                {
+                    name: 'Finance App',
+                    description: 'Aplicación para controlar los gastos individuales o de una cuenta conjunta, con sus gastos fijos, transacciones, estadísticas y límites.',
+                    image: '../assets/img/finance.png',
+                    technologies: ['React', 'Spring Boot', 'PostgreSQL'],
+                    link: '#'
+                }
+            ]
+        },
         about: {
             title: 'Sobre mí',
             description: 'Me gusta programar. Me gusta pensar cómo estructurar un proyecto para que no se rompa dentro de seis meses. Y me gusta trabajar con personas que disfrutan mejorando lo que hacen.\n\nHe pasado por la gestión de proyectos y eso me ha dado visión y contexto, pero lo que más me motiva es seguir cerca del código y de las decisiones técnicas importantes.',
@@ -81,6 +99,24 @@ export const textos = {
                 { past: 'Server creation' },
                 { past: 'Organization and good habits' },
                 { past: 'Migrations' }
+            ]
+        },
+        projects: {
+            list: [
+                {
+                    name: 'Baitask',
+                    description: 'Project to manage the tasks of a professional or family team, with roles, permissions, notifications... It is also oriented to process automation and project management.',
+                    image: '../assets/img/proyecto1.jpg',
+                    technologies: ['Angular 19', 'Node.js', 'TailwindCSS', 'MySQL', 'Express'],
+                    link: '#'
+                },
+                {
+                    name: 'Finance App',
+                    description: 'Application to manage individual or joint account expenses, with fixed expenses, transactions, statistics, and limits.',
+                    image: '../assets/img/finance.png',
+                    technologies: ['React', 'Spring Boot', 'PostgreSQL'],
+                    link: '#'
+                }
             ]
         },
         about: {
