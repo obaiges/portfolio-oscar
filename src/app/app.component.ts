@@ -29,7 +29,7 @@ export class AppComponent {
   showButton = false;
 
   skills = [{
-    name: 'Angular 18+',
+    name: 'Angular 19+',
     score: 90
   },
   {
@@ -38,7 +38,7 @@ export class AppComponent {
   },
   {
     name: 'JavaScript',
-    score: 90
+    score: 95
   },
   {
     name: 'TypeScript',
@@ -78,7 +78,7 @@ export class AppComponent {
   },
   {
     name: 'React',
-    score: 60
+    score: 80
   },
   {
     name: 'Git & GitHub',
@@ -86,12 +86,28 @@ export class AppComponent {
   },
   {
     name: 'Java',
-    score: 50
+    score: 80
+  },
+  {
+    name: 'Spring Boot',
+    score: 75
+  },
+  {
+    name: 'PostgreSQL',
+    score: 80
+  },
+  {
+    name: 'Karma / Jasmine',
+    score: 70
   },
   {
     name: 'Docker',
     score: 75
-  }
+  },
+  {
+    name: 'Jenkins',
+    score: 50
+  },
   ]
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
@@ -188,7 +204,7 @@ export class AppComponent {
       if (dist < 0) aboutContent.classList.remove('skills-show-animation');
     }
 
-    const contactTitle = document.getElementById('contact-title');
+    const contactTitle = document.getElementById('contact');
     if (contactTitle) {
       const dist = window.innerHeight - contactTitle.getBoundingClientRect().top;
       if (dist > 200) contactTitle.classList.add('skills-show-animation');
