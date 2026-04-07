@@ -16,7 +16,7 @@ export const textos = {
         },
         experience: {
             title: 'Desarrollador Web Full-Stack',
-            title2: 'Responsable del Departamento de TI',
+            title2: 'Tech Lead',
             time: 'Actualmente',
             description: 'Actualmente lidero un equipo de 6 programadores en el que estamos en continuo aprendizaje y desarrollo de nuevas tecnologías. Organizo y asumo la responsabilidad de los proyectos y la coordinación del equipo, sin olvidar mis tareas diarias como programador.',
             pastillas: [
@@ -39,33 +39,29 @@ export const textos = {
                     name: 'Baitask',
                     description: 'Proyecto para gestionar las tareas de un equipo profesional o de una unidad familiar, con roles, permisos, notificaciones... Además está orientado a la automatización de procesos y la gestión de proyectos.',
                     image: '../assets/img/baitask.png',
-                    technologies: ['Angular 19', 'Node.js', 'MySQL', 'Express'],
-                    link: '#'
+                    technologies: ['Angular 19', 'TypeScript', 'Node.js', 'Express', 'MySQL'],
+                    link: 'https://github.com/obaiges/Baitask'
                 },
                 {
                     name: 'Finance App',
-                    description: 'Aplicación para controlar los gastos individuales o de una cuenta conjunta, con sus gastos fijos, transacciones, estadísticas y límites.',
+                    description: 'Aplicación para controlar los gastos individuales o de una cuenta conjunta, con sus gastos fijos, transacciones, estadísticas...',
                     image: '../assets/img/finance.png',
-                    technologies: ['React', 'Spring Boot', 'PostgreSQL'],
-                    link: '#'
+                    technologies: ['React', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL'],
+                    link: 'https://github.com/obaiges/finance-app'
                 }
             ]
         },
         about: {
             title: 'Sobre mí',
-            description: 'Me gusta programar. Me gusta pensar cómo estructurar un proyecto para que no se rompa dentro de seis meses. Y me gusta trabajar con personas que disfrutan mejorando lo que hacen.\n\nHe pasado por la gestión de proyectos y eso me ha dado visión y contexto, pero lo que más me motiva es seguir cerca del código y de las decisiones técnicas importantes.',
+            description: 'Soy una persona curiosa por naturaleza y bastante cabezota cuando algo me interesa. Disfruto trabajando en proyectos donde puedo aportar ideas, mejorar lo que ya existe y aprender algo nuevo por el camino. Para mí, programar no es solo escribir código, es resolver problemas, pensar diferente y construir cosas que tengan sentido.\n\nFuera del teclado, intento mantener un equilibrio: entrenar, desconectar y pasar tiempo con la gente que me importa. Al final, todo eso también suma y se nota en cómo trabajas.\n\nÚltimamente he estado explorando herramientas y flujos de trabajo con IA, buscando siempre formas de trabajar de manera más eficiente, automatizar tareas repetitivas y llevar los proyectos un paso más allá. No me interesa solo usar nuevas tecnologías, sino entender cómo pueden aportar un impacto real. Siempre estoy buscando mejorar, tanto a nivel técnico como personal, así que si tienes algo interesante en mente, soy todo oídos.',
         },
         contact: {
             title: 'Contacto',
-            subtitle: 'Hablemos y creemos algo genial juntos',
-            name: 'Nombre',
-            email: 'Correo Electrónico',
-            message: 'Mensaje',
-            send: 'Enviar Mensaje',
-            placeholderName: 'Tu nombre',
-            placeholderEmail: 'tu@correo.com',
-            placeholderMessage: '¿En qué te puedo ayudar?'
-        }
+            subtitle: 'No dudes en contactarme si necesitas algo',
+            or: 'o',
+            welcome: 'Saluda',
+        },
+        footer: 'Todos los derechos reservados'
     },
     en: {
         menu: {
@@ -84,7 +80,7 @@ export const textos = {
         },
         experience: {
             title: 'Full-Stack Web Developer',
-            title2: 'Head of IT Department',
+            title2: 'Tech Lead',
             time: 'Now',
             description: 'I currently lead a team of 6 programmers in which we are continuously learning and developing new technologies. I organise and take responsibility for the projects and the coordination of the team, without forgetting my daily tasks as a programmer.',
             pastillas: [
@@ -106,33 +102,29 @@ export const textos = {
                 {
                     name: 'Baitask',
                     description: 'Project to manage the tasks of a professional or family team, with roles, permissions, notifications... It is also oriented to process automation and project management.',
-                    image: '../assets/img/proyecto1.jpg',
-                    technologies: ['Angular 19', 'Node.js', 'TailwindCSS', 'MySQL', 'Express'],
-                    link: '#'
+                    image: '../assets/img/baitask.png',
+                    technologies: ['Angular 19', 'TypeScript', 'Node.js', 'Express', 'MySQL'],
+                    link: 'https://github.com/obaiges/Baitask'
                 },
                 {
                     name: 'Finance App',
-                    description: 'Application to manage individual or joint account expenses, with fixed expenses, transactions, statistics, and limits.',
+                    description: 'Application to manage individual or joint account expenses, with fixed expenses, transactions, statistics...',
                     image: '../assets/img/finance.png',
-                    technologies: ['React', 'Spring Boot', 'PostgreSQL'],
-                    link: '#'
+                    technologies: ['React', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL'],
+                    link: 'https://github.com/obaiges/finance-app'
                 }
             ]
         },
         about: {
             title: 'About me',
-            description: `I enjoy programming. I like thinking about how to structure a project so that it won't break down in six months. And I like working with people who enjoy improving what they do. \n\nI've been involved in project management, which has given me insight and context, but what motivates me most is staying close to the code and important technical decisions.`,
+            description: `I’m naturally curious and pretty stubborn when something catches my interest. I enjoy working on projects where I can share ideas, improve what’s already there, and learn something new along the way. For me, coding isn’t just about writing code — it’s about solving problems, thinking differently, and building things that actually make sense.\n\nOutside of the keyboard, I try to keep a balance: training, disconnecting, and spending time with the people that matter to me. In the end, all of that shows in how you work.\n\nLately, I’ve been exploring AI tools and workflows, always looking for ways to work smarter, automate repetitive tasks, and push projects a bit further. I’m not just interested in using new tech — I like understanding how it can actually make a real impact. I’m always looking to improve, both technically and personally, so if you’ve got something interesting in mind, I’m all ears.`,
         },
         contact: {
             title: 'Contact',
-            subtitle: "Let's talk and create something great together",
-            name: 'Name',
-            email: 'Email',
-            message: 'Message',
-            send: 'Send Message',
-            placeholderName: 'Your name',
-            placeholderEmail: 'you@email.com',
-            placeholderMessage: 'How can I help you?'
-        }
+            subtitle: "Don't hesitate to contact me if you need something",
+            or: 'or',
+            welcome: 'Say hello',
+        },
+        footer: 'All rights reserved'
     }
 }
