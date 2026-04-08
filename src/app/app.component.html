@@ -24,8 +24,7 @@
         {{ mode === 'light' ? 'light_mode' : 'dark_mode' }}
       </span>
       <div class="md:hidden flex items-center">
-        <span class="material-symbols-outlined hover:scale-110 transition-transform select-none"
-          (click)="toggleMenu()">
+        <span class="material-symbols-outlined hover:scale-110 transition-transform select-none" (click)="toggleMenu()">
           {{ isMenuOpen ? 'close' : 'menu' }}
         </span>
       </div>
@@ -33,12 +32,11 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div class="md:hidden absolute w-full left-0 top-full overflow-hidden transition-all duration-500 ease-in-out bg-[var(--background-color)] shadow-xl" 
-       [class.max-h-0]="!isMenuOpen"
-       [class.max-h-[500px]]="isMenuOpen">
+  <div
+    class="md:hidden absolute w-full left-0 top-full overflow-hidden transition-all duration-500 ease-in-out bg-[var(--background-color)] shadow-xl"
+    [class.max-h-0]="!isMenuOpen" [class.max-h-[500px]]="isMenuOpen">
     <div class="flex flex-col px-6 gap-2 *:select-none pb-4 transition-transform duration-500 ease-in-out"
-         [class.-translate-y-full]="!isMenuOpen"
-         [class.translate-y-0]="isMenuOpen">
+      [class.-translate-y-full]="!isMenuOpen" [class.translate-y-0]="isMenuOpen">
       <a href="#experiencia" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
         (click)="closeMenu()">{{t().menu.exp}}</a>
       <a href="#skills" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
@@ -47,7 +45,8 @@
         (click)="closeMenu()">{{t().menu.proyectos}}</a>
       <a href="#sobre-mi" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
         (click)="closeMenu()">{{t().menu.sobre}}</a>
-      <a href="#contact" class="titulo block w-full text-center py-3 pt-4" (click)="closeMenu()">{{t().menu.contacto}}</a>
+      <a href="#contact" class="titulo block w-full text-center py-3 pt-4"
+        (click)="closeMenu()">{{t().menu.contacto}}</a>
     </div>
   </div>
 </nav>
