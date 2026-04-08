@@ -18,7 +18,7 @@ export const textos = {
             title: 'Desarrollador Web Full-Stack',
             title2: 'Tech Lead',
             time: 'Actualmente',
-            description: 'Actualmente lidero un equipo de 6 programadores en el que estamos en continuo aprendizaje y desarrollo de nuevas tecnologías. Organizo y asumo la responsabilidad de los proyectos y la coordinación del equipo, sin olvidar mis tareas diarias como programador.',
+            description: 'Actualmente lidero un equipo de 4 programadores en el que estamos en continuo aprendizaje y desarrollo de nuevas tecnologías. Organizo y asumo la responsabilidad de los proyectos y la coordinación del equipo, sin olvidar mis tareas diarias como programador.',
             pastillas: [
                 { past: 'Gestión de proyectos' },
                 { past: 'Conocimientos de empresa' },
@@ -82,7 +82,7 @@ export const textos = {
             title: 'Full-Stack Web Developer',
             title2: 'Tech Lead',
             time: 'Now',
-            description: 'I currently lead a team of 6 programmers in which we are continuously learning and developing new technologies. I organise and take responsibility for the projects and the coordination of the team, without forgetting my daily tasks as a programmer.',
+            description: 'I currently lead a team of 4 programmers in which we are continuously learning and developing new technologies. I organise and take responsibility for the projects and the coordination of the team, without forgetting my daily tasks as a programmer.',
             pastillas: [
                 { past: 'Project management' },
                 { past: 'Corporate knowledge' },
