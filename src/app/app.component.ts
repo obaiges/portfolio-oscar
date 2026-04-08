@@ -27,6 +27,15 @@ export class AppComponent {
   t = t
   currentLang = currentLang
   showButton = false;
+  isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
 
   skills = [{
     name: 'Angular 19+',
@@ -204,7 +213,7 @@ export class AppComponent {
       if (dist < 0) aboutContent.classList.remove('skills-show-animation');
     }
 
-    const contactTitle = document.getElementById('contact');
+    const contactTitle = document.getElementById('contact-content');
     if (contactTitle) {
       const dist = window.innerHeight - contactTitle.getBoundingClientRect().top;
       if (dist > 200) contactTitle.classList.add('skills-show-animation');
