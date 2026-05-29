@@ -81,8 +81,9 @@ nav {
 .flip-card {
     background-color: transparent;
     width: 12rem;
-    height: 18rem;
+    height: 16rem;
     min-width: 12rem;
+    min-height: 16rem;
     object-fit: cover;
     perspective: 1000px;
 }
@@ -244,63 +245,41 @@ nav {
     }
 }
 
-.orbit {
+.badge-wrap {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    animation: spin 12s linear infinite;
 }
 
-/* segunda órbita arrancando a 180° */
-.orbit-2 {
-    width: 100%;
-    height: 100%;
-    animation-duration: 18s;
-
-    /* 🔥 desfase */
-    transform: translate(-50%, -50%) rotate(180deg);
+.badge-wrap-1 {
+    top: 0.75rem;
+    right: 0.75rem;
+    animation: float-vertical 4s ease-in-out infinite;
 }
 
-/* badge */
+.badge-wrap-2 {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    animation: float-horizontal 3.5s ease-in-out infinite;
+}
+
 .badge {
-    position: absolute;
-    background-color: var(--blanco-suave);
+    padding: .4rem 1.2rem;
+    background: var(--blanco-suave);
     color: black;
-    top: 0;
-    left: 50%;
-    padding: .5rem 1rem;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 10px var(--primary-color);
+    border: 1px solid var(--primary-color-25);
+    border-radius: 9999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     text-wrap: nowrap;
-    transform: translateX(-50%);
-    animation: counter-spin 12s linear infinite;
+    font-size: .85rem;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
 }
 
-/* iguala duración para contrarrotar */
-.orbit-2 .badge {
-    animation-duration: 18s;
+@keyframes float-vertical {
+    0%, 100% { transform: translateY(-6px); }
+    50% { transform: translateY(6px); }
 }
 
-/* animaciones */
-@keyframes spin {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-@keyframes counter-spin {
-    from {
-        transform: translateX(-50%) rotate(0deg);
-    }
-
-    to {
-        transform: translateX(-50%) rotate(-360deg);
-    }
+@keyframes float-horizontal {
+    0%, 100% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
 }

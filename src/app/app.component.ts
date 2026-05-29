@@ -52,11 +52,9 @@ export class AppComponent {
         { name: 'Angular 19+', score: 90 },
         { name: 'React', score: 80 },
         { name: 'HTML5 & CSS3', score: 90 },
-        { name: 'SASS / SCSS', score: 85 },
         { name: 'TailwindCSS', score: 90 },
         { name: 'Angular Signals', score: 90 },
         { name: 'RxJS', score: 85 },
-        { name: 'UX/UI & Figma', score: 95 },
       ]
     },
     {
@@ -68,7 +66,7 @@ export class AppComponent {
         { name: 'NestJS', score: 85 },
         { name: 'TypeORM', score: 80 },
         { name: 'Spring Boot', score: 75 },
-        { name: 'API SOAP', score: 80 },
+        { name: 'API SOAP', score: 70 },
       ]
     },
     {
@@ -77,6 +75,7 @@ export class AppComponent {
       skills: [
         { name: 'MySQL', score: 95 },
         { name: 'PostgreSQL', score: 80 },
+        { name: 'Oracle', score: 70 },
       ]
     },
     {
@@ -86,16 +85,16 @@ export class AppComponent {
         { name: 'JavaScript', score: 95 },
         { name: 'TypeScript', score: 95 },
         { name: 'Java', score: 85 },
-        { name: 'Python', score: 70 },
+        { name: 'Python', score: 50 },
       ]
     },
     {
       name: 'DevOps & Tools',
       icon: 'construction',
       skills: [
-        { name: 'Docker', score: 75 },
-        { name: 'Jenkins', score: 50 },
         { name: 'Git & GitHub', score: 90 },
+        { name: 'Docker', score: 80 },
+        { name: 'Jenkins', score: 50 },
       ]
     },
     {

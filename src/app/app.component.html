@@ -51,8 +51,8 @@
   </div>
 </nav>
 <header class="pt-40 pb-16 max-w-5xl mx-8 lg:mx-auto" id="head">
-  <div class="flex flex-col items-center gap-28 md:flex-row">
-    <div class="flip-card relative">
+    <div class="flex flex-col items-start gap-10 md:flex-row md:gap-12">
+    <div class="flip-card relative shrink-0 self-center md:self-start">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="../assets/img/perfil.jpg" alt="Logo" class="rounded-md h-full object-cover animate-moving-shadow">
@@ -61,15 +61,15 @@
           <img src="../assets/img/perfil2.jpg" alt="Logo" class="rounded-md h-full object-cover animate-moving-shadow">
         </div>
       </div>
-      <div class="orbit orbit-1">
-        <div class="badge">🚀 Clean Code</div>
+      <div class="badge-wrap badge-wrap-1">
+        <div class="badge">Clean Code</div>
       </div>
 
-      <div class="orbit orbit-2">
-        <div class="badge">🎨 Pixel Perfect</div>
+      <div class="badge-wrap badge-wrap-2">
+        <div class="badge">Pixel Perfect</div>
       </div>
     </div>
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-6 flex-1">
       <span class="text-4xl min-h-[1.2em]">
         <span>{{typewriterText().slice(0, oscarStart)}}</span>
         @if (typewriterText().length > oscarStart) {
