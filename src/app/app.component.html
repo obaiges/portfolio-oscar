@@ -70,8 +70,15 @@
       </div>
     </div>
     <div class="flex flex-col gap-8">
-      <span class="text-4xl">{{t().header.title}} <span
-          class="!font-semibold text-[var(--primary-color)]">Óscar</span></span>
+      <span class="text-4xl min-h-[1.2em]">
+        <span>{{typewriterText().slice(0, oscarStart)}}</span>
+        @if (typewriterText().length > oscarStart) {
+        <span class="!font-semibold text-[var(--primary-color)]">{{typewriterText().slice(oscarStart)}}</span>
+        }
+        <span class="typewriter-cursor-wrapper" [class.is-hidden]="typewriterComplete()">
+          <span class="typewriter-cursor"></span>
+        </span>
+      </span>
       <span class="text-xl">+{{getYears()}} {{t().header.desc1}} <span
           class="!font-semibold text-[var(--primary-color)]">Full-Stack Developer</span> {{t().header.desc2}}</span>
       <div class="flex gap-4 *:select-none *:text-sm">
@@ -85,7 +92,7 @@
   </div>
 </header>
 <main class="overflow-x-hidden">
-  <section id="experiencia" class="max-w-5xl mx-8 lg:mx-auto pt-14" id="experiencia">
+  <section id="experiencia" class="max-w-5xl mx-8 lg:mx-auto pt-14">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold mb-2">{{t().menu.exp}}</h2>
       <div class="h-1 w-20 mx-auto rounded-full
@@ -226,15 +233,6 @@
   <section id="skills"
     class="w-full box-border py-16 my-24 skew-y-1 relative overflow-hidden bg-gradient-to-br  from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
 
-    <!-- Glow decorativo -->
-    <div class="absolute -top-32 -left-32 w-96 h-96 
-              bg-[var(--primary-color-25)] 
-              rounded-full blur-3xl opacity-40"></div>
-
-    <div class="absolute -bottom-32 -right-32 w-96 h-96 
-              bg-[var(--primary-color-10)] 
-              rounded-full blur-3xl opacity-40"></div>
-
     <div class="max-w-5xl mx-8 lg:mx-auto -skew-y-1 relative z-10">
 
       <div class="text-center mb-16 skills-show" id="skills-title">
@@ -247,9 +245,23 @@
                   to-[var(--primary-color)]"></div>
       </div>
 
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8">
-        @for (s of skills; track $index) {
-        <app-skills [name]="s.name" [score]="s.score"></app-skills>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        @for (cat of skillsByCategory; track cat.name; let catIdx = $index) {
+        <div
+          class="rounded-2xl p-5 md:p-6 border border-[var(--primary-color-25)] bg-[var(--primary-color-10)]/60 hover:border-[var(--primary-color-50)] hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center gap-3 mb-5 pb-3 border-b border-[var(--primary-color-25)]">
+            <span
+              class="material-symbols-outlined text-xl text-[var(--primary-color)] bg-[var(--primary-color-10)] p-2 rounded-lg">{{cat.icon}}</span>
+            <h3 class="text-lg font-bold">{{cat.name}}</h3>
+            <span
+              class="ml-auto text-xs font-mono bg-[var(--primary-color-10)] text-[var(--primary-color)] px-2 py-0.5 rounded-md">{{cat.skills.length}}</span>
+          </div>
+          <div class="flex flex-col gap-4">
+            @for (skill of cat.skills; track skill.name; let skillIdx = $index) {
+            <app-skills [name]="skill.name" [score]="skill.score" [visible]="skillsVisible()"></app-skills>
+            }
+          </div>
+        </div>
         }
       </section>
 
@@ -311,13 +323,6 @@
 
   <section id="sobre-mi"
     class="w-full box-border py-16 my-24 -skew-y-1 relative overflow-hidden bg-gradient-to-br from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
-    <div class="absolute -top-32 -left-32 w-96 h-96 
-              bg-[var(--primary-color-25)] 
-              rounded-full blur-3xl opacity-40"></div>
-
-    <div class="absolute -bottom-32 -right-32 w-96 h-96 
-              bg-[var(--primary-color-10)] 
-              rounded-full blur-3xl opacity-40"></div>
     <div class="max-w-5xl mx-8 lg:mx-auto relative z-10 skew-y-1">
 
       <!-- Title with animation class reused -->
@@ -336,8 +341,6 @@
         <div class="w-full md:w-1/3 flex justify-center">
           <div class="relative w-64 h-64">
 
-            <div class="absolute inset-0 bg-[var(--primary-color-25)] rounded-full blur-2xl animate-pulse"></div>
-
             <img [src]="mode == 'dark' ? '../assets/img/perfil4.jpeg' : '../assets/img/perfil5.jpeg'" alt="Profile"
               class="rounded-full w-full h-full object-cover 
               border-4 border-[var(--primary-color-50)] 
@@ -349,7 +352,7 @@
         <!-- Text -->
         <div class="w-full md:w-2/3">
           <div
-            class="p-8 rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-[var(--primary-color-50)] group">
+            class="p-8 rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-[var(--primary-color-50)] group">
             <p
               class="text-sm leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity whitespace-pre-line">
               {{t().about.description}}

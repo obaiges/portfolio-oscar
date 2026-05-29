@@ -1,30 +1,23 @@
-import { isPlatformBrowser, NgStyle } from '@angular/common';
-import { Component, HostListener, Inject, Input, OnChanges, PLATFORM_ID, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [NgStyle],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss'
 })
 export class SkillsComponent implements OnChanges {
-
   @Input() name: string = '';
   @Input() score: number = 0;
-  @Input() skillId: string = 'skill'; // id del elemento a observar
+  @Input() description: string = '';
+  @Input() visible: boolean = false;
 
   animatedScore: number = 0;
-  shouldAnimate: boolean = false;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
-
-  ngAfterViewInit() {
-    this.checkScroll();
-  }
+  private hasAnimated = false;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['score'] && this.shouldAnimate) {
+    if (changes['visible'] && this.visible && !this.hasAnimated) {
+      this.hasAnimated = true;
       this.animateScore();
     }
   }
@@ -33,28 +26,6 @@ export class SkillsComponent implements OnChanges {
     this.animatedScore = 0;
     setTimeout(() => {
       this.animatedScore = this.score;
-    }, 10);
+    }, 50);
   }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    this.checkScroll();
-  }
-
-  checkScroll() {
-    if (isPlatformBrowser(this.platformId)) {
-      const skill = document.getElementById(this.skillId);
-      if (!skill) return;
-      const distanciaTitle = window.innerHeight - skill.getBoundingClientRect().top;
-      if (distanciaTitle > 200 && !this.shouldAnimate) {
-        this.shouldAnimate = true;
-        this.animateScore();
-      }
-      if (distanciaTitle < 0 && this.shouldAnimate) {
-        this.shouldAnimate = false;
-        this.animatedScore = 0;
-      }
-    }
-  }
-
 }
