@@ -34,6 +34,8 @@ export const textos = {
             ]
         },
         projects: {
+            // ➕ PARA AÑADIR MÁS PROYECTOS: copia cualquier bloque { ... } de la lista.
+            // Campos: name, description, image (src/assets/img/...), technologies, link (GitHub).
             list: [
                 {
                     name: 'Baitask',
@@ -48,6 +50,27 @@ export const textos = {
                     image: '../assets/img/finance.png',
                     technologies: ['React', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL'],
                     link: 'https://github.com/obaiges/finance-app'
+                },
+                {
+                    name: 'Proyecto 3',
+                    description: '[EDITAR] Descripción breve del proyecto: qué problema resuelve, tecnologías clave y tu rol en el desarrollo. Cambia este texto en src/app/textos.ts.',
+                    image: '../assets/img/proyecto-3.svg',
+                    technologies: ['Tecnología 1', 'Tecnología 2', 'Tecnología 3'],
+                    link: '#'
+                },
+                {
+                    name: 'Proyecto 4',
+                    description: '[EDITAR] Descripción breve del proyecto: qué problema resuelve, tecnologías clave y tu rol en el desarrollo. Cambia este texto en src/app/textos.ts.',
+                    image: '../assets/img/proyecto-4.svg',
+                    technologies: ['Tecnología 1', 'Tecnología 2', 'Tecnología 3'],
+                    link: '#'
+                },
+                {
+                    name: 'Proyecto 5',
+                    description: '[EDITAR] Descripción breve del proyecto: qué problema resuelve, tecnologías clave y tu rol en el desarrollo. Cambia este texto en src/app/textos.ts.',
+                    image: '../assets/img/proyecto-5.svg',
+                    technologies: ['Tecnología 1', 'Tecnología 2', 'Tecnología 3'],
+                    link: '#'
                 }
             ]
         },
@@ -61,7 +84,22 @@ export const textos = {
             or: 'o',
             welcome: 'Saluda',
         },
-        footer: 'Todos los derechos reservados'
+        terminal: {
+            user: 'oscar@dev',
+            path: '~',
+            lines: [
+                { cmd: 'whoami', out: 'Óscar Baiges Ruiz · Full-Stack Dev' },
+                { cmd: 'cat stack.txt', out: 'Angular · React · Node · TypeScript · SQL' },
+                { cmd: './open_to_work.sh', out: '[OK] listo para nuevos retos' }
+            ]
+        },
+        stats: {
+            years: 'años de experiencia',
+            projects: 'proyectos construidos',
+            techs: 'tecnologías en mi stack'
+        },
+        footer: 'Todos los derechos reservados',
+        footerBuilt: 'Diseñado y programado desde cero con Angular + Tailwind'
     },
     en: {
         menu: {
@@ -98,6 +136,8 @@ export const textos = {
             ]
         },
         projects: {
+            // ➕ TO ADD MORE PROJECTS: copy any { ... } block from the list.
+            // Fields: name, description, image (src/assets/img/...), technologies, link (GitHub).
             list: [
                 {
                     name: 'Baitask',
@@ -112,6 +152,27 @@ export const textos = {
                     image: '../assets/img/finance.png',
                     technologies: ['React', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL'],
                     link: 'https://github.com/obaiges/finance-app'
+                },
+                {
+                    name: 'Project 3',
+                    description: '[EDIT] Short project description: what problem it solves, key technologies and your role in the development. Change this text in src/app/textos.ts.',
+                    image: '../assets/img/proyecto-3.svg',
+                    technologies: ['Technology 1', 'Technology 2', 'Technology 3'],
+                    link: '#'
+                },
+                {
+                    name: 'Project 4',
+                    description: '[EDIT] Short project description: what problem it solves, key technologies and your role in the development. Change this text in src/app/textos.ts.',
+                    image: '../assets/img/proyecto-4.svg',
+                    technologies: ['Technology 1', 'Technology 2', 'Technology 3'],
+                    link: '#'
+                },
+                {
+                    name: 'Project 5',
+                    description: '[EDIT] Short project description: what problem it solves, key technologies and your role in the development. Change this text in src/app/textos.ts.',
+                    image: '../assets/img/proyecto-5.svg',
+                    technologies: ['Technology 1', 'Technology 2', 'Technology 3'],
+                    link: '#'
                 }
             ]
         },
@@ -125,6 +186,21 @@ export const textos = {
             or: 'or',
             welcome: 'Say hello',
         },
-        footer: 'All rights reserved'
+        terminal: {
+            user: 'oscar@dev',
+            path: '~',
+            lines: [
+                { cmd: 'whoami', out: 'Óscar Baiges Ruiz · Full-Stack Dev' },
+                { cmd: 'cat stack.txt', out: 'Angular · React · Node · TypeScript · SQL' },
+                { cmd: './open_to_work.sh', out: '[OK] ready for new challenges' }
+            ]
+        },
+        stats: {
+            years: 'years of experience',
+            projects: 'projects built',
+            techs: 'technologies in my stack'
+        },
+        footer: 'All rights reserved',
+        footerBuilt: 'Designed & coded from scratch with Angular + Tailwind'
     }
 }

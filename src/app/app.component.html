@@ -1,278 +1,185 @@
-<nav
-  class="w-full fixed top-0 z-50 box-border transition-all duration-300 {{ isMenuOpen ? 'bg-[var(--background-color)] md:bg-transparent' : '' }}">
-  <div class="flex py-2 max-w-5xl mx-8 lg:mx-auto justify-between items-center">
-    <div>
-      <a href="#head" (click)="closeMenu()">
-        <img src="../assets/img/{{mode == 'dark' ? 'logo' : 'logo-oscuro'}}.png" alt="Logo"
-          class="w-20 h-[43px] rounded-md object-cover cursor-pointer">
-      </a>
+<!-- Preloader boot -->
+@if (!bootGone()) {
+<div class="preloader" [class.preloader-leaving]="bootLeaving()" aria-hidden="true">
+  <div class="preloader-terminal font-mono-tech">
+    <div class="flex gap-1.5 mb-5">
+      <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+      <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+      <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
     </div>
-    <div class="hidden md:flex gap-4 lg:gap-6 items-center *:select-none">
-      <a href="#experiencia" class="titulo">{{t().menu.exp}}</a>
-      <a href="#skills" class="titulo">{{t().menu.skills}}</a>
-      <a href="#proyectos" class="titulo">{{t().menu.proyectos}}</a>
-      <a href="#sobre-mi" class="titulo">{{t().menu.sobre}}</a>
-      <a href="#contact" class="titulo">{{t().menu.contacto}}</a>
-    </div>
-    <div class="flex items-center gap-4 cursor-pointer">
-      @if(currentLang() == 'es') {
-      <span class="hover:scale-110 transition-transform select-none" (click)="setLanguage('en')">ES</span>
-      } @else {
-      <span class="hover:scale-110 transition-transform select-none" (click)="setLanguage('es')">EN</span>
-      }
-      <span class="material-symbols-outlined hover:scale-110 transition-transform select-none" (click)="toggleMode()">
-        {{ mode === 'light' ? 'light_mode' : 'dark_mode' }}
-      </span>
-      <div class="md:hidden flex items-center">
-        <span class="material-symbols-outlined hover:scale-110 transition-transform select-none" (click)="toggleMenu()">
-          {{ isMenuOpen ? 'close' : 'menu' }}
-        </span>
-      </div>
-    </div>
+    @for (line of bootLines(); track $index) {
+    <div class="boot-line">{{line}}</div>
+    }
+    <span class="boot-cursor"></span>
   </div>
+</div>
+}
 
-  <!-- Mobile Menu -->
-  <div
-    class="md:hidden absolute w-full left-0 top-full overflow-hidden transition-all duration-500 ease-in-out bg-[var(--background-color)] shadow-xl"
-    [class.max-h-0]="!isMenuOpen" [class.max-h-[500px]]="isMenuOpen">
-    <div class="flex flex-col px-6 gap-2 *:select-none pb-4 transition-transform duration-500 ease-in-out"
-      [class.-translate-y-full]="!isMenuOpen" [class.translate-y-0]="isMenuOpen">
-      <a href="#experiencia" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
-        (click)="closeMenu()">{{t().menu.exp}}</a>
-      <a href="#skills" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
-        (click)="closeMenu()">{{t().menu.skills}}</a>
-      <a href="#proyectos" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
-        (click)="closeMenu()">{{t().menu.proyectos}}</a>
-      <a href="#sobre-mi" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
-        (click)="closeMenu()">{{t().menu.sobre}}</a>
-      <a href="#contact" class="titulo block w-full text-center py-3 pt-4"
-        (click)="closeMenu()">{{t().menu.contacto}}</a>
-    </div>
-  </div>
-</nav>
-<header class="pt-40 pb-16 max-w-5xl mx-8 lg:mx-auto" id="head">
-    <div class="flex flex-col items-start gap-10 md:flex-row md:gap-12">
-    <div class="flip-card relative shrink-0 self-center md:self-start">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="../assets/img/perfil.jpg" alt="Logo" class="rounded-md h-full object-cover animate-moving-shadow">
-        </div>
-        <div class="flip-card-back">
-          <img src="../assets/img/perfil2.jpg" alt="Logo" class="rounded-md h-full object-cover animate-moving-shadow">
-        </div>
-      </div>
-      <div class="badge-wrap badge-wrap-1">
-        <div class="badge">Clean Code</div>
-      </div>
+<!-- Fondo de partículas -->
+<canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
 
-      <div class="badge-wrap badge-wrap-2">
-        <div class="badge">Pixel Perfect</div>
-      </div>
-    </div>
-    <div class="flex flex-col gap-6 flex-1">
-      <span class="text-4xl min-h-[1.2em]">
-        <span>{{typewriterText().slice(0, oscarStart)}}</span>
-        @if (typewriterText().length > oscarStart) {
-        <span class="!font-semibold text-[var(--primary-color)]">{{typewriterText().slice(oscarStart)}}</span>
-        }
-        <span class="typewriter-cursor-wrapper" [class.is-hidden]="typewriterComplete()">
-          <span class="typewriter-cursor"></span>
-        </span>
-      </span>
-      <span class="text-xl">+{{getYears()}} {{t().header.desc1}} <span
-          class="!font-semibold text-[var(--primary-color)]">Full-Stack Developer</span> {{t().header.desc2}}</span>
-      <div class="flex gap-4 *:select-none *:text-sm">
-        <div class="estado flex items-center text-center bg-[var(--primary-color-25)]">{{t().header.status}}</div>
-        <a class="flex cursor-pointer border hover:scale-105 transition-transform border-[var(--text-color)] rounded-full items-center gap-2 py-1 px-4"
-          href="#contact">
-          <span class="material-symbols-outlined">forward_to_inbox</span> {{t().header.contact}}
+<!-- Barra de progreso de scroll -->
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress-fill" [style.width.%]="scrollProgress()"></div>
+</div>
+
+<div class="relative z-[1]">
+  <nav
+    class="w-full fixed top-0 z-50 box-border transition-all duration-300 {{ isMenuOpen ? 'bg-[var(--background-color)] md:bg-transparent' : '' }}">
+    <div class="flex py-2 max-w-5xl mx-8 lg:mx-auto justify-between items-center">
+      <div>
+        <a href="#head" (click)="closeMenu()">
+          <img src="../assets/img/{{mode == 'dark' ? 'logo' : 'logo-oscuro'}}.png" alt="Logo"
+            class="w-20 h-[43px] rounded-md object-cover cursor-pointer">
         </a>
       </div>
-    </div>
-  </div>
-</header>
-<main class="overflow-x-hidden">
-  <section id="experiencia" class="max-w-5xl mx-8 lg:mx-auto pt-14">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold mb-2">{{t().menu.exp}}</h2>
-      <div class="h-1 w-20 mx-auto rounded-full
-                  bg-gradient-to-r 
-                  from-[var(--primary-color-50)] 
-                  to-[var(--primary-color)]">
+      <div class="hidden md:flex gap-4 lg:gap-6 items-center *:select-none">
+        <a href="#experiencia" class="titulo" [class.nav-active]="activeSection() === 'experiencia'">{{t().menu.exp}}</a>
+        <a href="#skills" class="titulo" [class.nav-active]="activeSection() === 'skills'">{{t().menu.skills}}</a>
+        <a href="#proyectos" class="titulo" [class.nav-active]="activeSection() === 'proyectos'">{{t().menu.proyectos}}</a>
+        <a href="#sobre-mi" class="titulo" [class.nav-active]="activeSection() === 'sobre-mi'">{{t().menu.sobre}}</a>
+        <a href="#contact" class="titulo" [class.nav-active]="activeSection() === 'contact'">{{t().menu.contacto}}</a>
+      </div>
+      <div class="flex items-center gap-4 cursor-pointer">
+        @if(currentLang() == 'es') {
+        <span class="hover:scale-110 transition-transform select-none" (click)="setLanguage('en')">ES</span>
+        } @else {
+        <span class="hover:scale-110 transition-transform select-none" (click)="setLanguage('es')">EN</span>
+        }
+        <span class="material-symbols-outlined hover:scale-110 hover:text-[var(--primary-color)] transition-all select-none"
+          (click)="toggleMode()">
+          {{ mode === 'light' ? 'light_mode' : 'dark_mode' }}
+        </span>
+        <div class="md:hidden flex items-center">
+          <span class="material-symbols-outlined hover:scale-110 transition-transform select-none" (click)="toggleMenu()">
+            {{ isMenuOpen ? 'close' : 'menu' }}
+          </span>
+        </div>
       </div>
     </div>
 
-    <div class="relative border-l-2 border-[var(--primary-color-50)] ml-4 md:ml-0 space-y-12">
-      <!-- DVR Technology -->
-      <article
-        class="relative pl-12 md:pl-0 opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]"
-        id="fadeArticle">
-        <!-- Dot -->
-        <div
-          class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-[var(--primary-color)] ring-4 ring-[var(--primary-color-25)] shadow-lg">
-        </div>
-        <!-- Content -->
-        <div
-          class="relative p-8 rounded-2xl md:ml-12  border border-transparent transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:border-[var(--primary-color-50)] group overflow-hidden">
-          <!-- Fondo animado -->
-          <div class="absolute inset-0 opacity-0 transition-opacity duration-500 ease-out
-              group-hover:opacity-100
-              bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-              dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.15),rgba(15,23,42,1))]">
-          </div>
-          <!-- Contenido -->
-          <div class="relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-              <h4
-                class="md:text-2xl text-xl font-bold transition-colors duration-300 group-hover:text-[var(--primary-color)]">
-                {{t().experience.title2}}
-              </h4>
-              <span
-                class="px-3 py-1 text-xs font-bold rounded-full bg-[var(--primary-color-10)] text-[var(--primary-color)] transition-all duration-300 group-hover:scale-105">
-                09/2024 - {{t().experience.time}}
-              </span>
-            </div>
-            <div class="flex flex-wrap items-center gap-2 mb-4 text-sm font-medium break-words">
-              <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:rotate-6">
-                business
-              </span>
-              <a href="https://www.nitro-pc.es/" target="_blank"
-                class="titulo transition-colors duration-300 hover:text-[var(--primary-color)]">
-                DVR Technology SL
-              </a>
-              <span>•</span>
-              <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:-rotate-6">
-                location_on
-              </span>
-              <span>Zaragoza</span>
-            </div>
-            <p class="mb-6 transition-opacity duration-300 group-hover:opacity-90">
-              {{t().experience.description}}
-            </p>
-            <div class="flex flex-wrap gap-2">
-              @for (p of t().experience.pastillas; track $index) {
-              <span class="px-3 py-1 rounded-md text-xs font-semibold
-                bg-[var(--primary-color-10)]
-                text-[var(--primary-color)]
-                border border-[var(--primary-color-50)]
-                transition-all duration-300
-                hover:scale-105 hover:shadow-md">
-                {{p.past}}
-              </span>
-              }
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Previous Role -->
-      <article
-        class="relative pl-12 md:pl-0 opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]"
-        id="fadeArticle2">
-        <div
-          class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-[var(--primary-color)] ring-4 ring-[var(--background-color)]">
-        </div>
-
-        <div
-          class="relative p-8 rounded-2xl md:ml-12 border border-transparent transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:border-[var(--primary-color-50)] group overflow-hidden">
-
-          <!-- Fondo animado con blur -->
-          <div
-            class="absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 backdrop-blur-sm bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.75))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.15),rgba(15,23,42,0.85))]">
-          </div>
-
-          <!-- Contenido -->
-          <div class="relative z-10">
-
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-              <h4 class="text-2xl font-bold transition-colors duration-300 group-hover:text-[var(--primary-color)]">
-                {{t().experience.title}}
-              </h4>
-
-              <span
-                class="px-3 py-1 text-xs font-bold rounded-full bg-[var(--primary-color-10)] text-[var(--primary-color)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm">
-                02/2022 - 09/2024
-              </span>
-            </div>
-            <div class="flex flex-wrap items-center gap-2 mb-4 text-sm font-medium break-words">
-              <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:rotate-6">
-                business
-              </span>
-              <a href="https://www.nitro-pc.es/" target="_blank" class="titulo transition-colors duration-300
-                hover:text-[var(--primary-color)]">
-                DVR Technology SL
-              </a>
-              <span>•</span>
-              <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:-rotate-6">
-                location_on
-              </span>
-              <span>Zaragoza</span>
-            </div>
-
-            <p class="mb-6 transition-opacity duration-300 group-hover:opacity-90">
-              {{t().experience.description2}}
-            </p>
-
-            <div class="flex flex-wrap gap-2">
-              @for (p of t().experience.pastillas2; track $index) {
-              <span
-                class="px-3 py-1 rounded-md text-xs font-semibold bg-[var(--primary-color-10)] text-[var(--primary-color)] border border-[var(--primary-color-50)] transition-all duration-300 hover:scale-105 hover:shadow-md">
-                {{p.past}}
-              </span>
-              }
-            </div>
-
-          </div>
-        </div>
-
-      </article>
-    </div>
-  </section>
-
-
-  <section id="skills"
-    class="w-full box-border py-16 my-24 skew-y-1 relative overflow-hidden bg-gradient-to-br  from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
-
-    <div class="max-w-5xl mx-8 lg:mx-auto -skew-y-1 relative z-10">
-
-      <div class="text-center mb-16 skills-show" id="skills-title">
-        <h2 class="text-4xl font-bold mb-2">
-          {{t().menu.skills}}
-        </h2>
-        <div class="h-1 w-20 mx-auto rounded-full
-                  bg-gradient-to-r 
-                  from-[var(--primary-color-50)] 
-                  to-[var(--primary-color)]"></div>
+    <!-- Mobile Menu -->
+    <div
+      class="md:hidden absolute w-full left-0 top-full overflow-hidden transition-all duration-500 ease-in-out bg-[var(--background-color)] shadow-xl"
+      [class.max-h-0]="!isMenuOpen" [class.max-h-[500px]]="isMenuOpen">
+      <div class="flex flex-col px-6 gap-2 *:select-none pb-4 transition-transform duration-500 ease-in-out"
+        [class.-translate-y-full]="!isMenuOpen" [class.translate-y-0]="isMenuOpen">
+        <a href="#experiencia" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
+          (click)="closeMenu()">{{t().menu.exp}}</a>
+        <a href="#skills" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
+          (click)="closeMenu()">{{t().menu.skills}}</a>
+        <a href="#proyectos" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
+          (click)="closeMenu()">{{t().menu.proyectos}}</a>
+        <a href="#sobre-mi" class="titulo block w-full text-center py-3 border-b border-[var(--primary-color-10)]"
+          (click)="closeMenu()">{{t().menu.sobre}}</a>
+        <a href="#contact" class="titulo block w-full text-center py-3 pt-4"
+          (click)="closeMenu()">{{t().menu.contacto}}</a>
       </div>
+    </div>
+  </nav>
 
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        @for (cat of skillsByCategory; track cat.name; let catIdx = $index) {
-        <div
-          class="rounded-2xl p-5 md:p-6 border border-[var(--primary-color-25)] bg-[var(--primary-color-10)]/60 hover:border-[var(--primary-color-50)] hover:shadow-lg transition-all duration-300">
-          <div class="flex items-center gap-3 mb-5 pb-3 border-b border-[var(--primary-color-25)]">
-            <span
-              class="material-symbols-outlined text-xl text-[var(--primary-color)] bg-[var(--primary-color-10)] p-2 rounded-lg">{{cat.icon}}</span>
-            <h3 class="text-lg font-bold">{{cat.name}}</h3>
-            <span
-              class="ml-auto text-xs font-mono bg-[var(--primary-color-10)] text-[var(--primary-color)] px-2 py-0.5 rounded-md">{{cat.skills.length}}</span>
+  <header class="pt-40 pb-16 max-w-5xl mx-8 lg:mx-auto" id="head">
+    <div class="flex flex-col items-start gap-10 md:flex-row md:gap-12">
+      <div class="flip-card relative shrink-0 self-center md:self-start">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../assets/img/perfil.jpg" alt="Logo" class="rounded-md h-full object-cover animate-moving-shadow">
           </div>
-          <div class="flex flex-col gap-4">
-            @for (skill of cat.skills; track skill.name; let skillIdx = $index) {
-            <app-skills [name]="skill.name" [score]="skill.score" [visible]="skillsVisible()"></app-skills>
+          <div class="flip-card-back">
+            <img src="../assets/img/perfil2.jpg" alt="Logo" class="rounded-md h-full object-cover animate-moving-shadow">
+          </div>
+        </div>
+        <div class="badge-wrap badge-wrap-1">
+          <div class="badge">Clean Code</div>
+        </div>
+
+        <div class="badge-wrap badge-wrap-2">
+          <div class="badge">Pixel Perfect</div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-6 flex-1 min-w-0">
+        <span class="text-4xl min-h-[1.2em]">
+          <span>{{typewriterText().slice(0, oscarStart)}}</span>
+          @if (typewriterText().length > oscarStart) {
+          <span class="!font-semibold text-[var(--primary-color)] neon-text">{{typewriterText().slice(oscarStart)}}</span>
+          }
+          <span class="typewriter-cursor-wrapper" [class.is-hidden]="typewriterComplete()">
+            <span class="typewriter-cursor"></span>
+          </span>
+        </span>
+        <span class="text-xl">+{{getYears()}} {{t().header.desc1}} <span
+            class="!font-semibold text-[var(--primary-color)]">Full-Stack Developer</span> {{t().header.desc2}}</span>
+
+        <!-- Stats con contadores -->
+        <div class="grid grid-cols-3 gap-3 max-w-lg">
+          <div class="stat-chip">
+            <span class="stat-num font-mono-tech">+{{cYears()}}</span>
+            <span class="stat-label">{{t().stats.years}}</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num font-mono-tech">+5</span>
+            <span class="stat-label">{{t().stats.projects}}</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num font-mono-tech">{{cTechs()}}</span>
+            <span class="stat-label">{{t().stats.techs}}</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 *:select-none *:text-sm">
+          <div class="estado flex items-center gap-2 text-center bg-[var(--primary-color-25)]">
+            <span class="w-2 h-2 rounded-full bg-green-500 pulse-dot inline-block" style="background:#22c55e"></span>
+            {{t().header.status}}
+          </div>
+          <a class="flex cursor-pointer border hover:scale-105 transition-transform border-[var(--text-color)] rounded-full items-center gap-2 py-1 px-4"
+            href="#contact">
+            <span class="material-symbols-outlined">forward_to_inbox</span> {{t().header.contact}}
+          </a>
+        </div>
+
+        <!-- Terminal fake -->
+        <div class="terminal-window max-w-md w-full">
+          <div class="terminal-bar">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></span>
+            <span class="ml-3 text-[11px] opacity-60 font-mono-tech truncate">{{t().terminal.user}}: {{t().terminal.path}}</span>
+          </div>
+          <div class="terminal-body font-mono-tech scanlines">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-green-500">➜</span>
+              <span class="text-[var(--primary-color)]">{{t().terminal.user}}</span>
+              <span class="opacity-50">{{t().terminal.path}}</span>
+              <span>{{termCmd()}}</span>
+              <span class="term-cursor"></span>
+            </div>
+            @if (termOut()) {
+            <div class="mt-1.5 opacity-80 pl-6">{{termOut()}}</div>
             }
           </div>
         </div>
-        }
-      </section>
-
+      </div>
     </div>
-  </section>
+  </header>
 
+  <!-- Marquee de tecnologías -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      @for (item of marqueeItems; track $index) {
+      <span class="marquee-item">{{item}}</span>
+      <span class="marquee-sep font-mono-tech">//</span>
+      }
+      @for (item of marqueeItems; track $index) {
+      <span class="marquee-item">{{item}}</span>
+      <span class="marquee-sep font-mono-tech">//</span>
+      }
+    </div>
+  </div>
 
-  <section class="w-full box-border pt-16 relative z-10" id="proyectos">
-    <div class="max-w-5xl mx-8 lg:mx-auto">
-      <div class="text-center mb-16 skills-show" id="projects-title">
-        <h2 class="text-4xl font-bold mb-2">{{t().menu.proyectos}}</h2>
+  <main class="overflow-x-hidden">
+    <section id="experiencia" class="max-w-5xl mx-8 lg:mx-auto pt-14">
+      <div class="text-center mb-16 skills-show" id="exp-title">
+        <h2 class="text-4xl font-bold mb-2 glitch" [attr.data-text]="t().menu.exp">{{t().menu.exp}}</h2>
         <div class="h-1 w-20 mx-auto rounded-full
                   bg-gradient-to-r 
                   from-[var(--primary-color-50)] 
@@ -280,103 +187,184 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 skills-show" id="projects-content">
-        @for (project of t().projects.list; track $index) {
+      <div class="relative border-l-2 border-[var(--primary-color-50)] ml-4 md:ml-0 space-y-12">
+        <!-- DVR Technology -->
         <article
-          class="flex flex-col group relative overflow-hidden rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] backdrop-blur-sm shadow-xl hover:shadow-2xl hover:border-[var(--primary-color-50)] transition-all duration-500 hover:-translate-y-2">
-          <div class="relative h-60 w-full overflow-hidden">
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10">
-            </div>
-            <img [src]="project.image" [alt]="project.name"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          class="relative pl-12 md:pl-0 opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]"
+          id="fadeArticle">
+          <!-- Dot -->
+          <div
+            class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-[var(--primary-color)] ring-4 ring-[var(--primary-color-25)] shadow-lg">
           </div>
-          <div class="p-8 flex flex-col flex-grow relative z-20">
-            <div class="flex gap-4 justify-between items-center mb-3">
-              <span class="text-2xl font-bold transition-colors duration-300 group-hover:text-[var(--primary-color)]">
-                {{project.name}}</span>
-              <a href="{{project.link}}" target="_blank"
-                class="text-sm p-2 text-[var(--primary-color)] group-hover:text-[var(--primary-color)] flex items-center gap-2 opacity-0 transition duration-500 group-hover:opacity-100 rounded-md hover:bg-[var(--primary-color-25)] hover:text-[var(--primary-color)]">
-                <span>GitHub</span>
-                <span class="material-symbols-outlined">open_in_new</span>
-              </a>
+          <!-- Número -->
+          <span
+            class="hidden md:block absolute -left-2 top-8 font-mono-tech text-sm text-[var(--primary-color)] opacity-60 select-none">01</span>
+          <!-- Content -->
+          <div
+            class="relative p-8 rounded-2xl md:ml-12 border border-transparent transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:border-[var(--primary-color-50)] group overflow-hidden glow-card">
+            <!-- Fondo animado -->
+            <div class="absolute inset-0 opacity-0 transition-opacity duration-500 ease-out
+              group-hover:opacity-100
+              bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+              dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.15),rgba(15,23,42,1))]">
             </div>
-            <p class="opacity-80 mb-6 text-sm leading-relaxed flex-grow">{{project.description}}</p>
-
-            <div class="flex flex-wrap gap-2 mb-6">
-              @for (tech of project.technologies; track $index) {
-              <span class="px-3 py-1 rounded-md text-xs font-semibold
+            <!-- Contenido -->
+            <div class="relative z-10">
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+                <h4
+                  class="md:text-2xl text-xl font-bold transition-colors duration-300 group-hover:text-[var(--primary-color)]">
+                  {{t().experience.title2}}
+                </h4>
+                <span
+                  class="px-3 py-1 text-xs font-bold rounded-full bg-[var(--primary-color-10)] text-[var(--primary-color)] transition-all duration-300 group-hover:scale-105 font-mono-tech">
+                  09/2024 - {{t().experience.time}}
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 mb-4 text-sm font-medium break-words">
+                <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:rotate-6">
+                  business
+                </span>
+                <a href="https://www.nitro-pc.es/" target="_blank"
+                  class="titulo transition-colors duration-300 hover:text-[var(--primary-color)]">
+                  DVR Technology SL
+                </a>
+                <span>•</span>
+                <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:-rotate-6">
+                  location_on
+                </span>
+                <span>Zaragoza</span>
+              </div>
+              <p class="mb-6 transition-opacity duration-300 group-hover:opacity-90">
+                {{t().experience.description}}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                @for (p of t().experience.pastillas; track $index) {
+                <span class="px-3 py-1 rounded-md text-xs font-semibold
                 bg-[var(--primary-color-10)]
                 text-[var(--primary-color)]
                 border border-[var(--primary-color-50)]
                 transition-all duration-300
                 hover:scale-105 hover:shadow-md">
-                {{tech}}
-              </span>
-              }
+                  {{p.past}}
+                </span>
+                }
+              </div>
             </div>
           </div>
         </article>
-        }
+
+        <!-- Previous Role -->
+        <article
+          class="relative pl-12 md:pl-0 opacity-0 translate-y-[-100px] transition-all ease-in-out duration-[2000ms]"
+          id="fadeArticle2">
+          <div
+            class="absolute left-[-11px] top-0 w-5 h-5 rounded-full bg-[var(--primary-color)] ring-4 ring-[var(--background-color)]">
+          </div>
+          <span
+            class="hidden md:block absolute -left-2 top-8 font-mono-tech text-sm text-[var(--primary-color)] opacity-60 select-none">02</span>
+
+          <div
+            class="relative p-8 rounded-2xl md:ml-12 border border-transparent transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:border-[var(--primary-color-50)] group overflow-hidden glow-card">
+
+            <!-- Fondo animado con blur -->
+            <div
+              class="absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 backdrop-blur-sm bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.75))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.15),rgba(15,23,42,0.85))]">
+            </div>
+
+            <!-- Contenido -->
+            <div class="relative z-10">
+
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+                <h4 class="text-2xl font-bold transition-colors duration-300 group-hover:text-[var(--primary-color)]">
+                  {{t().experience.title}}
+                </h4>
+
+                <span
+                  class="px-3 py-1 text-xs font-bold rounded-full bg-[var(--primary-color-10)] text-[var(--primary-color)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm font-mono-tech">
+                  02/2022 - 09/2024
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 mb-4 text-sm font-medium break-words">
+                <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:rotate-6">
+                  business
+                </span>
+                <a href="https://www.nitro-pc.es/" target="_blank" class="titulo transition-colors duration-300
+                hover:text-[var(--primary-color)]">
+                  DVR Technology SL
+                </a>
+                <span>•</span>
+                <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:-rotate-6">
+                  location_on
+                </span>
+                <span>Zaragoza</span>
+              </div>
+
+              <p class="mb-6 transition-opacity duration-300 group-hover:opacity-90">
+                {{t().experience.description2}}
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                @for (p of t().experience.pastillas2; track $index) {
+                <span
+                  class="px-3 py-1 rounded-md text-xs font-semibold bg-[var(--primary-color-10)] text-[var(--primary-color)] border border-[var(--primary-color-50)] transition-all duration-300 hover:scale-105 hover:shadow-md">
+                  {{p.past}}
+                </span>
+                }
+              </div>
+
+            </div>
+          </div>
+
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="sobre-mi"
-    class="w-full box-border py-16 my-24 -skew-y-1 relative overflow-hidden bg-gradient-to-br from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
-    <div class="max-w-5xl mx-8 lg:mx-auto relative z-10 skew-y-1">
 
-      <!-- Title with animation class reused -->
-      <div class="text-center mb-16 skills-show" id="about-title">
-        <h2 class="text-4xl font-bold mb-2">{{t().about.title}}</h2>
-        <div class="h-1 w-20 mx-auto rounded-full
+    <section id="skills"
+      class="w-full box-border py-16 my-24 skew-y-1 relative overflow-hidden bg-gradient-to-br  from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
+
+      <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+
+      <div class="max-w-5xl mx-8 lg:mx-auto -skew-y-1 relative z-10">
+
+        <div class="text-center mb-16 skills-show" id="skills-title">
+          <h2 class="text-4xl font-bold mb-2 glitch" [attr.data-text]="t().menu.skills">
+            {{t().menu.skills}}
+          </h2>
+          <div class="h-1 w-20 mx-auto rounded-full
                   bg-gradient-to-r 
                   from-[var(--primary-color-50)] 
-                  to-[var(--primary-color)]">
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div class="flex flex-col md:flex-row gap-12 items-center skills-show" id="about-content">
-        <!-- Image/Decor -->
-        <div class="w-full md:w-1/3 flex justify-center">
-          <div class="relative w-64 h-64">
-
-            <img [src]="mode == 'dark' ? '../assets/img/perfil4.jpeg' : '../assets/img/perfil5.jpeg'" alt="Profile"
-              class="rounded-full w-full h-full object-cover 
-              border-4 border-[var(--primary-color-50)] 
-              relative z-10 transition-transform hover:scale-105 duration-500">
-
-          </div>
+                  to-[var(--primary-color)]"></div>
         </div>
 
-        <!-- Text -->
-        <div class="w-full md:w-2/3">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          @for (cat of skillsByCategory; track cat.name; let catIdx = $index) {
           <div
-            class="p-8 rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-[var(--primary-color-50)] group">
-            <p
-              class="text-sm leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity whitespace-pre-line">
-              {{t().about.description}}
-            </p>
+            class="rounded-2xl p-5 md:p-6 border border-[var(--primary-color-25)] bg-[var(--primary-color-10)]/60 hover:border-[var(--primary-color-50)] hover:shadow-lg transition-all duration-300 hud-corners">
+            <div class="flex items-center gap-3 mb-5 pb-3 border-b border-[var(--primary-color-25)]">
+              <span
+                class="material-symbols-outlined text-xl text-[var(--primary-color)] bg-[var(--primary-color-10)] p-2 rounded-lg">{{cat.icon}}</span>
+              <h3 class="text-lg font-bold">{{cat.name}}</h3>
+              <span
+                class="ml-auto text-xs font-mono-tech bg-[var(--primary-color-10)] text-[var(--primary-color)] px-2 py-0.5 rounded-md">{{cat.skills.length}}</span>
+            </div>
+            <div class="flex flex-col gap-4">
+              @for (skill of cat.skills; track skill.name; let skillIdx = $index) {
+              <app-skills [name]="skill.name" [score]="skill.score" [visible]="skillsVisible()"></app-skills>
+              }
+            </div>
           </div>
-        </div>
+          }
+        </section>
+
       </div>
+    </section>
 
-    </div>
-  </section>
-</main>
-<section id="contact" class="w-full box-border mb-16">
 
-  <div id="contact-content" class="max-w-4xl skills-show mx-8 lg:mx-auto relative z-10">
-    <div
-      class="p-10 md:p-14 rounded-3xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden relative group">
-
-      <!-- Fondo animado sutil del card -->
-      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none 
-                  bg-[radial-gradient(circle_at_50%_0%,var(--primary-color-25),transparent_70%)]"></div>
-
-      <div class="flex flex-col items-center text-center relative z-10">
-        <div class="text-center mb-10">
-          <h2 class="text-4xl font-bold mb-2">{{t().contact.title}}</h2>
+    <section class="w-full box-border pt-16 relative z-10" id="proyectos">
+      <div class="max-w-5xl mx-8 lg:mx-auto">
+        <div class="text-center mb-16 skills-show" id="projects-title">
+          <h2 class="text-4xl font-bold mb-2 glitch" [attr.data-text]="t().menu.proyectos">{{t().menu.proyectos}}</h2>
           <div class="h-1 w-20 mx-auto rounded-full
                   bg-gradient-to-r 
                   from-[var(--primary-color-50)] 
@@ -384,68 +372,167 @@
           </div>
         </div>
 
-        <p class="text-lg opacity-80 max-w-xl mb-10 leading-relaxed font-medium">
-          {{t().contact.subtitle}}
-        </p>
+        <div class="skills-show" id="projects-content">
+          <app-projects-carousel [projects]="t().projects.list"></app-projects-carousel>
+        </div>
+      </div>
+    </section>
 
-        <a href="mailto:oscarbaigesr@gmail.com" class="group/btn relative inline-flex items-center gap-3 px-10 py-4 rounded-full 
+    <section id="sobre-mi"
+      class="w-full box-border py-16 my-24 -skew-y-1 relative overflow-hidden bg-gradient-to-br from-[var(--primary-color-10)] via-[var(--background-color)] to-[var(--primary-color-25)]">
+      <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+      <div class="max-w-5xl mx-8 lg:mx-auto relative z-10 skew-y-1">
+
+        <!-- Title with animation class reused -->
+        <div class="text-center mb-16 skills-show" id="about-title">
+          <h2 class="text-4xl font-bold mb-2 glitch" [attr.data-text]="t().about.title">{{t().about.title}}</h2>
+          <div class="h-1 w-20 mx-auto rounded-full
+                  bg-gradient-to-r 
+                  from-[var(--primary-color-50)] 
+                  to-[var(--primary-color)]">
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex flex-col md:flex-row gap-12 items-center skills-show" id="about-content">
+          <!-- Image/Decor -->
+          <div class="w-full md:w-1/3 flex justify-center">
+            <div class="relative w-64 h-64">
+
+              <img [src]="mode == 'dark' ? '../assets/img/perfil4.jpeg' : '../assets/img/perfil5.jpeg'" alt="Profile"
+                class="rounded-full w-full h-full object-cover 
+              border-4 border-[var(--primary-color-50)] 
+              relative z-10 transition-transform hover:scale-105 duration-500">
+
+              <!-- Anillos orbitales -->
+              <div class="orbit-ring orbit-ring-1" aria-hidden="true">
+                <span class="orbit-item o1a"><span class="orbit-badge">Angular</span></span>
+                <span class="orbit-item o1b"><span class="orbit-badge">TypeScript</span></span>
+                <span class="orbit-item o1c"><span class="orbit-badge">Node.js</span></span>
+                <span class="orbit-item o1d"><span class="orbit-badge">RxJS</span></span>
+              </div>
+              <div class="orbit-ring orbit-ring-2 hidden lg:block" aria-hidden="true">
+                <span class="orbit-item o2a"><span class="orbit-badge">Python</span></span>
+                <span class="orbit-item o2b"><span class="orbit-badge">MySQL</span></span>
+                <span class="orbit-item o2c"><span class="orbit-badge">Docker</span></span>
+                <span class="orbit-item o2d"><span class="orbit-badge">Java</span></span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="w-full md:w-2/3">
+            <div
+              class="p-8 rounded-2xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] shadow-xl hover:shadow-2xl transition-all duration-500 hover:border-[var(--primary-color-50)] group glow-card">
+              <p
+                class="text-sm leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity whitespace-pre-line">
+                {{t().about.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <section id="contact" class="w-full box-border mb-16">
+
+    <div id="contact-content" class="max-w-4xl skills-show mx-8 lg:mx-auto relative z-10">
+      <div
+        class="p-10 md:p-14 rounded-3xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden relative group glow-card">
+
+        <!-- Fondo animado sutil del card -->
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none 
+                  bg-[radial-gradient(circle_at_50%_0%,var(--primary-color-25),transparent_70%)]"></div>
+
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="text-center mb-10">
+            <h2 class="text-4xl font-bold mb-2 glitch" [attr.data-text]="t().contact.title">{{t().contact.title}}</h2>
+            <div class="h-1 w-20 mx-auto rounded-full
+                  bg-gradient-to-r 
+                  from-[var(--primary-color-50)] 
+                  to-[var(--primary-color)]">
+            </div>
+          </div>
+
+          <p class="text-lg opacity-80 max-w-xl mb-10 leading-relaxed font-medium">
+            {{t().contact.subtitle}}
+          </p>
+
+          <a href="mailto:oscarbaigesr@gmail.com" class="group/btn relative inline-flex items-center gap-3 px-10 py-4 rounded-full 
                   bg-[var(--primary-color)] text-white font-bold text-lg
                   transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[var(--primary-color-50)]
                   overflow-hidden">
-          <div
-            class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out">
+            <div
+              class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out">
+            </div>
+            <span class="relative z-10">{{t().contact.welcome}}</span>
+            <span
+              class="material-symbols-outlined relative z-10 transition-transform duration-300 group-hover/btn:translate-x-2">
+              send
+            </span>
+          </a>
+
+          <div class="flex items-center gap-4 w-full max-w-sm mt-12 mb-8">
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent to-[var(--primary-color-50)]"></div>
+            <span class="text-xs font-bold opacity-50 uppercase tracking-widest">{{t().contact.or}}</span>
+            <div class="flex-1 h-px bg-gradient-to-l from-transparent to-[var(--primary-color-50)]"></div>
           </div>
-          <span class="relative z-10">{{t().contact.welcome}}</span>
-          <span
-            class="material-symbols-outlined relative z-10 transition-transform duration-300 group-hover/btn:translate-x-2">
-            send
-          </span>
-        </a>
 
-        <div class="flex items-center gap-4 w-full max-w-sm mt-12 mb-8">
-          <div class="flex-1 h-px bg-gradient-to-r from-transparent to-[var(--primary-color-50)]"></div>
-          <span class="text-xs font-bold opacity-50 uppercase tracking-widest">{{t().contact.or}}</span>
-          <div class="flex-1 h-px bg-gradient-to-l from-transparent to-[var(--primary-color-50)]"></div>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-6">
-          <a target="_blank" href="https://www.linkedin.com/in/oscar-baiges-ruiz-1932272a6"
-            class="flex items-center gap-3 px-6 py-3 rounded-xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] hover:border-[var(--primary-color-50)] hover:bg-[var(--primary-color-25)] transition-all duration-300 hover:-translate-y-1 text-sm font-semibold text-[var(--text-color)] group/link">
-            <svg
-              class="w-5 h-5 fill-current transition-transform duration-300 group-hover/link:scale-110 group-hover/link:text-[#0A66C2]"
-              viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-            LinkedIn
-          </a>
-          <a target="_blank" href="https://github.com/obaiges"
-            class="flex items-center gap-3 px-6 py-3 rounded-xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] hover:border-[var(--primary-color-50)] hover:bg-[var(--primary-color-25)] transition-all duration-300 hover:-translate-y-1 text-sm font-semibold text-[var(--text-color)] group/link">
-            <svg
-              class="w-5 h-5 fill-current transition-transform duration-300 group-hover/link:scale-110 group-hover/link:text-gray-500"
-              viewBox="0 0 24 24">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-            GitHub
-          </a>
+          <div class="flex flex-wrap justify-center gap-6">
+            <a target="_blank" href="https://www.linkedin.com/in/oscar-baiges-ruiz-1932272a6"
+              class="flex items-center gap-3 px-6 py-3 rounded-xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] hover:border-[var(--primary-color-50)] hover:bg-[var(--primary-color-25)] transition-all duration-300 hover:-translate-y-1 text-sm font-semibold text-[var(--text-color)] group/link">
+              <svg
+                class="w-5 h-5 fill-current transition-transform duration-300 group-hover/link:scale-110 group-hover/link:text-[#0A66C2]"
+                viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+              LinkedIn
+            </a>
+            <a target="_blank" href="https://github.com/obaiges"
+              class="flex items-center gap-3 px-6 py-3 rounded-xl bg-[var(--primary-color-10)] border border-[var(--primary-color-25)] hover:border-[var(--primary-color-50)] hover:bg-[var(--primary-color-25)] transition-all duration-300 hover:-translate-y-1 text-sm font-semibold text-[var(--text-color)] group/link">
+              <svg
+                class="w-5 h-5 fill-current transition-transform duration-300 group-hover/link:scale-110 group-hover/link:text-gray-500"
+                viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="w-full box-border py-4 bg-[var(--primary-color-10)] relative">
-  <div class="text-center text-sm opacity-70">
-    &copy; 2026 Óscar Baiges Ruiz • {{t().footer}}
+  <footer class="w-full box-border py-5 bg-[var(--primary-color-10)] relative">
+    <div
+      class="max-w-5xl mx-8 lg:mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <div class="opacity-70 text-center sm:text-left">
+        &copy; 2026 Óscar Baiges Ruiz • {{t().footer}}
+      </div>
+      <div class="flex items-center gap-2 opacity-60 text-xs order-last sm:order-none">
+        <span class="material-symbols-outlined text-base">terminal</span>
+        <span>{{t().footerBuilt}}</span>
+      </div>
+      <span
+        class="font-mono-tech text-[10px] px-2 py-0.5 rounded border border-[var(--primary-color-25)] text-[var(--primary-color)] select-none">v2.0.0</span>
+    </div>
+  </footer>
+
+  @if(showButton) {
+  <div class="w-full fixed flex justify-end bottom-0 z-40 pointer-events-none">
+    <a href="#head"
+      class="pointer-events-auto rounded-full select-none cursor-pointer w-12 h-12 mr-8 mb-8 grid place-items-center transition-transform hover:scale-110"
+      [style.background]="'conic-gradient(var(--primary-color) ' + scrollProgress() + '%, var(--primary-color-10) 0)'">
+      <span
+        class="w-9 h-9 rounded-full grid place-items-center bg-[var(--background-color)] text-[var(--primary-color)]"><span
+          class="material-symbols-outlined">
+          arrow_upward
+        </span></span>
+    </a>
   </div>
-</footer>
-@if(showButton) {
-<div class="w-full fixed flex justify-end bottom-0">
-  <a href="#head"
-    class="rounded-full select-none cursor-pointer w-12 h-12 flex mr-8 mb-8 items-center justify-center bg-[var(--primary-color)] hover:bg-[var(--primary-color-hover)] transition-colors text-[var(--background-color)]"><span
-      class="material-symbols-outlined">
-      arrow_upward
-    </span></a>
+  }
 </div>
-}

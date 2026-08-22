@@ -24,6 +24,7 @@
     --primary-color-10: rgba(0, 123, 255, 0.1);
     --gris: rgb(104, 104, 104);
     --blanco-suave: #cee6ff;
+    --grid-line: rgba(0, 123, 255, 0.07);
 }
 
 /* Tema oscuro */
@@ -37,10 +38,12 @@
     --primary-color-10: rgba(187, 134, 252, 0.1);
     --gris: rgb(145, 145, 145);
     --blanco-suave: #e3caff;
+    --grid-line: rgba(187, 134, 252, 0.08);
 
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     max-width: 100%;
 }
@@ -49,4 +52,283 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     transition: all 0.6s ease-in-out;
+}
+
+body.boot-lock {
+    overflow: hidden;
+    height: 100vh;
+}
+
+::selection {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+/* ---------- Iconos Material (global para que llegue a todos los componentes) ---------- */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+/* ---------- Scrollbar estilo terminal ---------- */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color), var(--primary-color-hover));
+    border-radius: 8px;
+    border: 2px solid var(--background-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color-hover);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
+}
+
+/* ---------- Fuente mono para acentos tech ---------- */
+.font-mono-tech {
+    font-family: "JetBrains Mono", monospace !important;
+    font-weight: 400 !important;
+}
+
+/* ---------- Texto neón ---------- */
+.neon-text {
+    text-shadow:
+        0 0 8px var(--primary-color-50),
+        0 0 24px var(--primary-color-25);
+}
+
+.neon-box {
+    box-shadow:
+        0 0 12px var(--primary-color-25),
+        inset 0 0 12px var(--primary-color-10);
+}
+
+/* ---------- Fondo grid tipo blueprint ---------- */
+.bg-grid {
+    background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 75%);
+}
+
+/* ---------- Glitch en títulos ---------- */
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.glitch:hover::before {
+    opacity: .85;
+    color: var(--primary-color);
+    animation: glitch-shift-1 .45s steps(2, end) infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
+}
+
+.glitch:hover::after {
+    opacity: .85;
+    color: var(--primary-color-hover);
+    animation: glitch-shift-2 .4s steps(2, end) infinite reverse;
+    clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-shift-1 {
+    0% { transform: translate(-3px, -2px); }
+    50% { transform: translate(3px, 1px); }
+    100% { transform: translate(-2px, 2px); }
+}
+
+@keyframes glitch-shift-2 {
+    0% { transform: translate(3px, 2px); }
+    50% { transform: translate(-3px, -1px); }
+    100% { transform: translate(2px, -2px); }
+}
+
+/* ---------- Borde de luz giratorio (beam) ---------- */
+@property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.glow-card {
+    position: relative;
+}
+
+.glow-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(from var(--beam-angle),
+            transparent 0deg,
+            transparent 290deg,
+            var(--primary-color) 330deg,
+            #fff 355deg,
+            transparent 360deg);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .5s ease;
+    animation: beam-spin 4s linear infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.glow-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes beam-spin {
+    to {
+        --beam-angle: 360deg;
+    }
+}
+
+/* ---------- Esquinas HUD ---------- */
+.hud-corners {
+    position: relative;
+}
+
+.hud-corners::before,
+.hud-corners::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--primary-color);
+    opacity: 0;
+    transition: all .35s ease;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.hud-corners::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hud-corners::after {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+.hud-corners:hover::before,
+.hud-corners:hover::after {
+    opacity: 1;
+}
+
+.hud-corners:hover::before {
+    top: 6px;
+    left: 6px;
+}
+
+.hud-corners:hover::after {
+    bottom: 6px;
+    right: 6px;
+}
+
+/* ---------- Scanlines sutiles ---------- */
+.scanlines {
+    position: relative;
+}
+
+.scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 4px);
+    mix-blend-mode: overlay;
+}
+
+/* ---------- Pulsación de punto "online" ---------- */
+.pulse-dot {
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    animation: pulse-ring 1.8s cubic-bezier(.4, 0, .6, 1) infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    80%,
+    100% {
+        transform: scale(2.6);
+        opacity: 0;
+    }
+}
+
+/* ---------- Respeto a reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }

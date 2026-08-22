@@ -1,0 +1,43 @@
+.skill-shimmer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.skill-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.45),
+            transparent);
+    animation: skill-sweep 2.4s ease-in-out infinite;
+}
+
+@keyframes skill-sweep {
+    0% {
+        left: -45%;
+    }
+
+    60%,
+    100% {
+        left: 110%;
+    }
+}
+
+.skill-glow-dot {
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: #fff;
+    box-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color-50);
+}
