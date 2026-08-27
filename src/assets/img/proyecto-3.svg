@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#bb86fc22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b2a"/>
+      <stop offset="1" stop-color="#10131f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect width="1200" height="760" fill="url(#g)"/>
+  <circle cx="600" cy="310" r="150" fill="none" stroke="#bb86fc55" stroke-width="2" stroke-dasharray="10 8"/>
+  <circle cx="600" cy="310" r="110" fill="none" stroke="#bb86fc33" stroke-width="2"/>
+  <text x="600" y="335" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="72" font-weight="700" fill="#bb86fc">&lt;/&gt;</text>
+  <text x="600" y="565" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="42" letter-spacing="12" fill="#e0e0e0">PROYECTO 03</text>
+  <text x="600" y="620" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" letter-spacing="2" fill="#bb86fc99">// cambia esta imagen en src/assets/img</text>
+</svg>

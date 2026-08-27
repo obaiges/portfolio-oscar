@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#4f9dff22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141c2e"/>
+      <stop offset="1" stop-color="#0f1420"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect width="1200" height="760" fill="url(#g)"/>
+  <rect x="470" y="180" width="260" height="260" rx="24" fill="none" stroke="#4f9dff55" stroke-width="2"/>
+  <rect x="500" y="210" width="200" height="200" rx="16" fill="none" stroke="#4f9dff33" stroke-width="2"/>
+  <text x="600" y="330" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="64" font-weight="700" fill="#4f9dff">{ }</text>
+  <text x="600" y="565" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="42" letter-spacing="12" fill="#e0e0e0">PROYECTO 04</text>
+  <text x="600" y="620" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" letter-spacing="2" fill="#4f9dff99">// cambia esta imagen en src/assets/img</text>
+</svg>
